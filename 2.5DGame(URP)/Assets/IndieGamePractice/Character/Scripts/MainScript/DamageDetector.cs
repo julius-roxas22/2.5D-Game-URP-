@@ -83,6 +83,7 @@ namespace IndieGamePractice
         private void takeDamage(AttackInfo info)
         {
             //Debug.Log(control.name + " hit by " + info._Attacker.name + " into " + damagedBodyPart.ToString());
+            CameraManager._GetInstance._ShakeCamera(0.35f);
             control._SkinnedMesh.runtimeAnimatorController = DeathAnimationManager._GetInstance._GetDeathController(damagedBodyPart);
             info._CurrentHits++;
             control.GetComponent<BoxCollider>().enabled = false;

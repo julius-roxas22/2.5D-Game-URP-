@@ -36,11 +36,27 @@ namespace IndieGamePractice
         {
             registerAttack(characterStateBase._GetCharacterControl(animator), animatorStateInfo);
             deRegisterAttack(animatorStateInfo);
+            checkCombo(characterStateBase._GetCharacterControl(animator), animator, animatorStateInfo);
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
+            animator.SetBool(TransitionParameters.Attack.ToString(), false);
             clearAttacks();
+        }
+
+        private void checkCombo(CharacterControl control, Animator animator, AnimatorStateInfo stateInfo)
+        {
+            if (stateInfo.normalizedTime >= _StartAttackTime + ((_EndAttackTime - _StartAttackTime) / 3))
+            {
+                if (stateInfo.normalizedTime < _EndAttackTime + ((_EndAttackTime - _StartAttackTime) / 3))
+                {
+                    if (control._Attack)
+                    {
+                        animator.SetBool(TransitionParameters.Attack.ToString(), true);
+                    }
+                }
+            }
         }
 
         private void registerAttack(CharacterControl control, AnimatorStateInfo animatorStateInfo)
@@ -88,7 +104,7 @@ namespace IndieGamePractice
 
             foreach (AttackInfo info in AttackManager._GetInstance._CurrentAttacks)
             {
-                if (null == info && info._IsFinished)
+                if (null == info && this == info._AttackAbility)
                 {
                     _FinishedAttack.Add(info);
                 }

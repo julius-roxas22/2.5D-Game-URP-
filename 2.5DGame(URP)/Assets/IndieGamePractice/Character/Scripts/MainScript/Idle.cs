@@ -46,7 +46,7 @@ namespace IndieGamePractice
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-
+            animator.SetBool(TransitionParameters.Attack.ToString(), false);
         }
     }
 }
