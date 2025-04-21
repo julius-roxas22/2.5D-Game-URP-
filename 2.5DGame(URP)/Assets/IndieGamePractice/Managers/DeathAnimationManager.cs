@@ -18,19 +18,30 @@ namespace IndieGamePractice
             }
         }
 
-        public RuntimeAnimatorController _GetDeathController(BodyPart damagedPart)
+        public RuntimeAnimatorController _GetDeathController(BodyPart damagedPart, AttackInfo info)
         {
             candidates.Clear();
             setUpDeathLoader();
 
             foreach (DeathData data in loader._DeathData)
             {
-                foreach (BodyPart part in data._DamagedParts)
+                if (info._LaunchIntoAir)
                 {
-                    if (part == damagedPart)
+                    if (data._LaunchIntoAir)
                     {
                         candidates.Add(data._DeathAnimationController);
                         break;
+                    }
+                }
+                else
+                {
+                    foreach (BodyPart part in data._DamagedParts)
+                    {
+                        if (part == damagedPart)
+                        {
+                            candidates.Add(data._DeathAnimationController);
+                            break;
+                        }
                     }
                 }
             }

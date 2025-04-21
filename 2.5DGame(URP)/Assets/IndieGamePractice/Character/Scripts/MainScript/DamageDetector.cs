@@ -84,7 +84,7 @@ namespace IndieGamePractice
         {
             //Debug.Log(control.name + " hit by " + info._Attacker.name + " into " + damagedBodyPart.ToString());
             CameraManager._GetInstance._ShakeCamera(0.35f);
-            control._SkinnedMesh.runtimeAnimatorController = DeathAnimationManager._GetInstance._GetDeathController(damagedBodyPart);
+            control._SkinnedMesh.runtimeAnimatorController = DeathAnimationManager._GetInstance._GetDeathController(damagedBodyPart, info);
             info._CurrentHits++;
             control.GetComponent<BoxCollider>().enabled = false;
             control._GetRigidBody.useGravity = false;

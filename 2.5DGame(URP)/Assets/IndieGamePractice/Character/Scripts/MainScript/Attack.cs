@@ -10,11 +10,13 @@ namespace IndieGamePractice
         public float _StartAttackTime;
         public float _EndAttackTime;
         public List<string> _ColliderNames = new List<string>();
+        public bool _LaunchIntoAir;
         public bool _MustCollide;
         public bool _MustFaceAttacker;
         public float _AttackRange;
         public int _MaxHits;
         private List<AttackInfo> _FinishedAttack = new List<AttackInfo>();
+        [SerializeField] private bool onDebug;
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
@@ -73,7 +75,13 @@ namespace IndieGamePractice
                     if (this == info._AttackAbility && !info._IsRegistered)
                     {
                         info._RegisterAttackInfo(this);
+
+                        if (onDebug)
+                        {
+                            Debug.Log("Register in " + animatorStateInfo.normalizedTime);
+                        }
                     }
+
                 }
             }
         }
@@ -93,6 +101,11 @@ namespace IndieGamePractice
                     {
                         info._IsFinished = true;
                         info.GetComponent<PoolObject>()._TurnOff();
+
+                        if (onDebug)
+                        {
+                            Debug.Log("de - Register in " + animatorStateInfo.normalizedTime);
+                        }
                     }
                 }
             }
@@ -104,7 +117,7 @@ namespace IndieGamePractice
 
             foreach (AttackInfo info in AttackManager._GetInstance._CurrentAttacks)
             {
-                if (null == info && this == info._AttackAbility)
+                if (null == info || this == info._AttackAbility)
                 {
                     _FinishedAttack.Add(info);
                 }

@@ -9,6 +9,7 @@ namespace IndieGamePractice
     {
         public List<BodyPart> _DamagedParts = new List<BodyPart>();
         public RuntimeAnimatorController _DeathAnimationController;
+        public bool _LaunchIntoAir;
     }
 
 }
