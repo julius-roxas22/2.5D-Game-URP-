@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace IndieGamePractice
+{
+    public class CharacterManager : Singleton<CharacterManager>
+    {
+        public List<CharacterControl> _AllCharacters = new List<CharacterControl>();
+
+        public CharacterControl _GetPlayableCharacters(PlayableCharacterType playableCharacterType)
+        {
+            foreach (CharacterControl control in _AllCharacters)
+            {
+                if (control.characterType == playableCharacterType)
+                {
+                    return control;
+                }
+            }
+
+            return null;
+        }
+    }
+}
+
