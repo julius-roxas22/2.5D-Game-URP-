@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f80e12db676162f4d8cebc8397600e04, type: 3}
-  m_Name: Player_JumpPrep_ForceTransition
+  m_Script: {fileID: 11500000, guid: 32b18382590f4624ca4a106e04effb33, type: 3}
+  m_Name: ClickAnimation_Walk(Reverse)_ResetLocalPosition
   m_EditorClassIdentifier: 
-  transitionTiming: 0.9
+  onStart: 0
+  onExit: 1

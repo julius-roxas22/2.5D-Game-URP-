@@ -94,6 +94,31 @@ MonoBehaviour:
   allAbilitiesData:
   - {fileID: 11400000, guid: 0cec0bb7feb87234286498c76a0436f2, type: 2}
   - {fileID: 11400000, guid: 14e1fa0a6c8ba0d49b38a72ce74bb75d, type: 2}
+--- !u!1101 &-8300534080264399267
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: ForceTransition
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 1601115327053701842}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.0686329
+  m_TransitionOffset: 0
+  m_ExitTime: 0.96651536
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &-8255377440159200428
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -242,6 +267,48 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b430c958b9eda3a4ea1b0154505fa115, type: 2}
   - {fileID: 11400000, guid: 3da6bc6161e3d5840a23053e84a32c64, type: 2}
   - {fileID: 11400000, guid: e80a2c03d965723469aac8055cbadde2, type: 2}
+--- !u!114 &-5585145698361296881
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b89832964654bb48a0904dc086ad37b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allAbilitiesData:
+  - {fileID: 11400000, guid: dcb6c0293980f174fb16b590663975d5, type: 2}
+--- !u!1102 &-5143194981458004619
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Idle Click Animation
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 5012540682660545963}
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 1
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: 4b14f7d7a5e910842b47046e097c07dd,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-4780325110413934274
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -425,6 +492,7 @@ AnimatorState:
   - {fileID: -656266128142167377}
   - {fileID: 505234592480278617}
   - {fileID: 8726519430259076509}
+  - {fileID: 3862187706908315656}
   m_StateMachineBehaviours:
   - {fileID: 2439066274323108484}
   m_Position: {x: 50, y: 50, z: 0}
@@ -483,6 +551,31 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &-990347965265637215
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: ForceTransition
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -5143194981458004619}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.33556795
+  m_TransitionOffset: 0
+  m_ExitTime: 0.94363135
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &-964190792537813287
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -533,6 +626,35 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-621978145869845645
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Walk Click Animation (Reverse)
+  m_Speed: -1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 791313171416933975}
+  m_StateMachineBehaviours:
+  - {fileID: 228694244985993417}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: 713faa9ab9424c046adf81b7ef188b02,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -567,6 +689,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: Attack
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: ClickAnimation
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -613,6 +741,22 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &228694244985993417
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b89832964654bb48a0904dc086ad37b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allAbilitiesData:
+  - {fileID: 11400000, guid: 393a40b389f7c5042a61212260aecf3a, type: 2}
+  - {fileID: 11400000, guid: 5183e171373f1cc40acfcd43b7eb1517, type: 2}
+  - {fileID: 11400000, guid: a19e9fd8bf6d88c4696e2b6d3d408217, type: 2}
 --- !u!1101 &505234592480278617
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -668,6 +812,31 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &791313171416933975
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: ForceTransition
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -2036759085924677753}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.069354475
+  m_TransitionOffset: 0
+  m_ExitTime: 0.96471536
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!114 &798242552302569479
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -708,6 +877,35 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: a1a3ad9b5616fa148adceff0616b450d, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &1601115327053701842
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BattleCry Click Animation
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: -990347965265637215}
+  m_StateMachineBehaviours:
+  - {fileID: -5585145698361296881}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 1
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: 1505f2fbdf131484293eb6cbbdf8d228,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -900,6 +1098,31 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4fc3c3e610dcb5c4b8b5120e1810a588, type: 2}
   - {fileID: 11400000, guid: 0e6d1e7c46c1c4347adc97d9b57e2018, type: 2}
   - {fileID: 11400000, guid: 8b85c26fe5f1e61498928e4b0ea0f3d1, type: 2}
+--- !u!1101 &3862187706908315656
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: ClickAnimation
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 6485064633851734788}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.045272827
+  m_TransitionOffset: 0
+  m_ExitTime: 0.99763006
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!114 &4051131788245117938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -917,6 +1140,31 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec63d03354d6668479c2b0cb087b7e21, type: 2}
   - {fileID: 11400000, guid: a48089209ca5d0e46a22a64326ade458, type: 2}
   - {fileID: 11400000, guid: d871c4354364a28449a82587de556576, type: 2}
+--- !u!1101 &5012540682660545963
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: ClickAnimation
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -621978145869845645}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.15554333
+  m_TransitionOffset: 0
+  m_ExitTime: 0.9918742
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!114 &5649355057725501241
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1003,6 +1251,18 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 1461554916752897156}
     m_Position: {x: 100, y: 810, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -5143194981458004619}
+    m_Position: {x: 710, y: 280, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 6485064633851734788}
+    m_Position: {x: 460, y: 560, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1601115327053701842}
+    m_Position: {x: 720, y: 620, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -621978145869845645}
+    m_Position: {x: 440, y: 380, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -1013,6 +1273,50 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -2036759085924677753}
+--- !u!114 &6395731581474260655
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b89832964654bb48a0904dc086ad37b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allAbilitiesData:
+  - {fileID: 11400000, guid: 393a40b389f7c5042a61212260aecf3a, type: 2}
+  - {fileID: 11400000, guid: 5183e171373f1cc40acfcd43b7eb1517, type: 2}
+--- !u!1102 &6485064633851734788
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Walk Click Animation
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: -8300534080264399267}
+  m_StateMachineBehaviours:
+  - {fileID: 6395731581474260655}
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 1
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: 713faa9ab9424c046adf81b7ef188b02,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &6604356532399773379
 AnimatorState:
   serializedVersion: 6

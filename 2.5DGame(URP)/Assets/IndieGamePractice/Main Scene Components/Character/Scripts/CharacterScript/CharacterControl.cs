@@ -11,6 +11,7 @@ namespace IndieGamePractice
         ForceTransition,
         Grounded,
         Attack,
+        ClickAnimation
     }
 
     public enum IndieGamePracticeScenes

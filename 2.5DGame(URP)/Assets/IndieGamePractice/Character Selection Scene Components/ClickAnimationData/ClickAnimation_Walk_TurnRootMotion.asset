@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f80e12db676162f4d8cebc8397600e04, type: 3}
-  m_Name: Player_JumpPrep_ForceTransition
+  m_Script: {fileID: 11500000, guid: baf35c448a2deb642b4ea68603ff49d7, type: 3}
+  m_Name: ClickAnimation_Walk_TurnRootMotion
   m_EditorClassIdentifier: 
-  transitionTiming: 0.9

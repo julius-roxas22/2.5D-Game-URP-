@@ -20,7 +20,7 @@ namespace IndieGamePractice
 
         private void Update()
         {
-            if (mouseControl._HoverCharacterType == PlayableCharacterType.NONE)
+            if (mouseControl._PlayableCharacter == PlayableCharacterType.NONE)
             {
                 hoverSelectedCharacter = null;
                 hoverLight.enabled = false;
@@ -36,8 +36,9 @@ namespace IndieGamePractice
         {
             if (null == hoverSelectedCharacter)
             {
-                hoverSelectedCharacter = CharacterManager._GetInstance._GetPlayableCharacters(mouseControl._HoverCharacterType);
-                transform.position = hoverSelectedCharacter.transform.position + hoverSelectedCharacter.transform.TransformDirection(offset);
+                hoverSelectedCharacter = CharacterManager._GetInstance._GetPlayableCharacters(mouseControl._PlayableCharacter);
+                transform.position = hoverSelectedCharacter._SkinnedMesh.transform.position + hoverSelectedCharacter._SkinnedMesh.transform.TransformDirection(offset);
+                transform.parent = hoverSelectedCharacter._SkinnedMesh.transform;
             }
         }
     }

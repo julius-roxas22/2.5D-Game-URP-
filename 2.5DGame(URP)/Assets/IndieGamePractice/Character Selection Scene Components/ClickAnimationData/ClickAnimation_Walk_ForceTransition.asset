@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f80e12db676162f4d8cebc8397600e04, type: 3}
-  m_Name: Player_JumpPrep_ForceTransition
+  m_Name: ClickAnimation_Walk_ForceTransition
   m_EditorClassIdentifier: 
-  transitionTiming: 0.9
+  transitionTiming: 0.5
