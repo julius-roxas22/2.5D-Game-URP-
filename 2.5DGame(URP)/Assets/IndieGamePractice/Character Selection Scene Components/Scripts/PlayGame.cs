@@ -12,9 +12,9 @@ namespace IndieGamePractice
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                if (characterSelectData._CharacterSelectType != PlayableCharacterType.NONE)
+                if (characterSelectData._CharacterSelectType != _PlayableCharacterType.NONE)
                 {
-                    UnityEngine.SceneManagement.SceneManager.LoadScene(IndieGamePracticeScenes.MainScene.ToString());
+                    UnityEngine.SceneManagement.SceneManager.LoadScene(_IndieGamePracticeScenes.MainScene.ToString());
                 }
                 else
                 {

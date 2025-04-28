@@ -9,8 +9,8 @@ namespace IndieGamePractice
     {
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            animator.SetBool(TransitionParameters.Jump.ToString(), false);
-            animator.SetBool(TransitionParameters.Move.ToString(), false);
+            animator.SetBool(_TransitionParameters.Jump.ToString(), false);
+            animator.SetBool(_TransitionParameters.Move.ToString(), false);
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)

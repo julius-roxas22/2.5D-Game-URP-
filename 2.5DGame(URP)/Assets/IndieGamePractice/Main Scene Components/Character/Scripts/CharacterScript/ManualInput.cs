@@ -14,6 +14,8 @@ namespace IndieGamePractice
 
         void Update()
         {
+            control._MoveUp = VirtualInputManager._GetInstance._MoveUp;
+            control._MoveDown = VirtualInputManager._GetInstance._MoveDown;
             control._MoveRight = VirtualInputManager._GetInstance._MoveRight;
             control._MoveLeft = VirtualInputManager._GetInstance._MoveLeft;
             control._Jump = VirtualInputManager._GetInstance._Jump;

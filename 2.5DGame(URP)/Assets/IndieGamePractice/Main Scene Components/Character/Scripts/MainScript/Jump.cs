@@ -20,7 +20,7 @@ namespace IndieGamePractice
                 characterStateBase._GetCharacterControl(animator)._GetRigidBody.AddForce(Vector3.up * jumpForce);
                 isJumped = true;
             }
-            animator.SetBool(TransitionParameters.Grounded.ToString(), false);
+            animator.SetBool(_TransitionParameters.Grounded.ToString(), false);
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)

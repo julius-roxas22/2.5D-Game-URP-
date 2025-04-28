@@ -48,18 +48,18 @@ namespace IndieGamePractice
         {
             if (control._Jump)
             {
-                animator.SetBool(TransitionParameters.Jump.ToString(), true);
+                animator.SetBool(_TransitionParameters.Jump.ToString(), true);
             }
 
             if (control._MoveRight && control._MoveLeft)
             {
-                animator.SetBool(TransitionParameters.Move.ToString(), false);
+                animator.SetBool(_TransitionParameters.Move.ToString(), false);
                 return;
             }
 
             if (!control._MoveRight && !control._MoveLeft)
             {
-                animator.SetBool(TransitionParameters.Move.ToString(), false);
+                animator.SetBool(_TransitionParameters.Move.ToString(), false);
                 return;
             }
 

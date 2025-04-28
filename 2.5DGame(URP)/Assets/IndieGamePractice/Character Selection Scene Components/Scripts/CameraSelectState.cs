@@ -10,9 +10,9 @@ namespace IndieGamePractice
     {
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex, AnimatorControllerPlayable controller)
         {
-            PlayableCharacterType[] arr = System.Enum.GetValues(typeof(PlayableCharacterType)) as PlayableCharacterType[];
+            _PlayableCharacterType[] arr = System.Enum.GetValues(typeof(_PlayableCharacterType)) as _PlayableCharacterType[];
 
-            foreach (PlayableCharacterType type in arr)
+            foreach (_PlayableCharacterType type in arr)
             {
                 animator.SetBool(type.ToString(), false);
             }

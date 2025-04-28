@@ -4,17 +4,18 @@ using UnityEngine;
 
 namespace IndieGamePractice
 {
-    public enum TransitionParameters
+    public enum _TransitionParameters
     {
         Move,
         Jump,
         ForceTransition,
         Grounded,
         Attack,
-        ClickAnimation
+        ClickAnimation,
+        TransitionIndex,
     }
 
-    public enum IndieGamePracticeScenes
+    public enum _IndieGamePracticeScenes
     {
         CharacterSelectionScene,
         MainScene
@@ -22,7 +23,7 @@ namespace IndieGamePractice
 
     public class CharacterControl : MonoBehaviour
     {
-        public PlayableCharacterType characterType;
+        public _PlayableCharacterType characterType;
         public Animator _SkinnedMesh;
         public List<GameObject> _BottomSpheres = new List<GameObject>();
         public List<GameObject> _FrontSpheres = new List<GameObject>();
@@ -31,6 +32,8 @@ namespace IndieGamePractice
 
         private List<TriggerDetector> _AllTriggers = new List<TriggerDetector>();
 
+        [HideInInspector] public bool _MoveUp;
+        [HideInInspector] public bool _MoveDown;
         [HideInInspector] public bool _MoveRight;
         [HideInInspector] public bool _MoveLeft;
         [HideInInspector] public bool _Jump;
@@ -40,6 +43,19 @@ namespace IndieGamePractice
         [HideInInspector] public float _PullMultiplier;
 
         private Rigidbody rigidBody;
+        private LedgeChecker ledgeChecker;
+
+        public LedgeChecker _GetLedgeChecker
+        {
+            get
+            {
+                if (null == ledgeChecker)
+                {
+                    ledgeChecker = GetComponentInChildren<LedgeChecker>();
+                }
+                return ledgeChecker;
+            }
+        }
 
         public Rigidbody _GetRigidBody
         {
@@ -205,7 +221,7 @@ namespace IndieGamePractice
 
         public Transform _GetBodyPartTransform(string bodyPart)
         {
-            foreach(Collider col in _RagdollParts)
+            foreach (Collider col in _RagdollParts)
             {
                 if (col.name.Contains(bodyPart))
                 {
@@ -217,7 +233,7 @@ namespace IndieGamePractice
 
         public void _FaceForward(bool isFacingForward)
         {
-            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == IndieGamePracticeScenes.CharacterSelectionScene.ToString())
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == _IndieGamePracticeScenes.CharacterSelectionScene.ToString())
             {
                 return;
             }

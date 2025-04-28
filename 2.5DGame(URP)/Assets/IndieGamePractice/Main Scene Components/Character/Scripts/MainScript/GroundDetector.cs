@@ -23,11 +23,11 @@ namespace IndieGamePractice
             {
                 if (isGrounded(control))
                 {
-                    animator.SetBool(TransitionParameters.Grounded.ToString(), true);
+                    animator.SetBool(_TransitionParameters.Grounded.ToString(), true);
                 }
                 else
                 {
-                    animator.SetBool(TransitionParameters.Grounded.ToString(), false);
+                    animator.SetBool(_TransitionParameters.Grounded.ToString(), false);
                 }
             }
         }

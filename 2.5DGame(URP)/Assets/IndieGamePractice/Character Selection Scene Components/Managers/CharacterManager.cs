@@ -8,7 +8,7 @@ namespace IndieGamePractice
     {
         public List<CharacterControl> _AllCharacters = new List<CharacterControl>();
 
-        public CharacterControl _GetPlayableCharacters(PlayableCharacterType playableCharacterType)
+        public CharacterControl _GetPlayableCharacters(_PlayableCharacterType playableCharacterType)
         {
             foreach (CharacterControl control in _AllCharacters)
             {

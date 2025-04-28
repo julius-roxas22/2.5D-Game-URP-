@@ -20,7 +20,7 @@ namespace IndieGamePractice
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            animator.SetBool(TransitionParameters.Attack.ToString(), false);
+            animator.SetBool(_TransitionParameters.Attack.ToString(), false);
 
             GameObject obj = PoolManager._GetInstance._InstantiateObject(PoolObjectType.AttackInfo);
             AttackInfo info = obj.GetComponent<AttackInfo>();
@@ -43,7 +43,7 @@ namespace IndieGamePractice
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            animator.SetBool(TransitionParameters.Attack.ToString(), false);
+            animator.SetBool(_TransitionParameters.Attack.ToString(), false);
             clearAttacks();
         }
 
@@ -55,7 +55,7 @@ namespace IndieGamePractice
                 {
                     if (control._Attack)
                     {
-                        animator.SetBool(TransitionParameters.Attack.ToString(), true);
+                        animator.SetBool(_TransitionParameters.Attack.ToString(), true);
                     }
                 }
             }

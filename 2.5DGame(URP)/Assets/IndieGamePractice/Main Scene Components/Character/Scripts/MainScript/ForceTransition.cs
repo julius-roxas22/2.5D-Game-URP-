@@ -19,13 +19,13 @@ namespace IndieGamePractice
         {
             if (animatorStateInfo.normalizedTime >= transitionTiming)
             {
-                animator.SetBool(TransitionParameters.ForceTransition.ToString(), true);
+                animator.SetBool(_TransitionParameters.ForceTransition.ToString(), true);
             }
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            animator.SetBool(TransitionParameters.ForceTransition.ToString(), false);
+            animator.SetBool(_TransitionParameters.ForceTransition.ToString(), false);
         }
     }
 }

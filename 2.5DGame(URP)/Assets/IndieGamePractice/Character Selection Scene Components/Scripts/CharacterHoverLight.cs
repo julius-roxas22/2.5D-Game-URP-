@@ -20,7 +20,7 @@ namespace IndieGamePractice
 
         private void Update()
         {
-            if (mouseControl._PlayableCharacter == PlayableCharacterType.NONE)
+            if (mouseControl._PlayableCharacter == _PlayableCharacterType.NONE)
             {
                 hoverSelectedCharacter = null;
                 hoverLight.enabled = false;

@@ -13,18 +13,18 @@ namespace IndieGamePractice
         {
             switch (characterSelectData._CharacterSelectType)
             {
-                case PlayableCharacterType.YELLOW:
+                case _PlayableCharacterType.YELLOW:
                     {
                         objName = "YBot - Yellow";
                         break;
                     }
 
-                case PlayableCharacterType.RED:
+                case _PlayableCharacterType.RED:
                     {
                         objName = "YBot - Red";
                         break;
                     }
-                case PlayableCharacterType.BLUE:
+                case _PlayableCharacterType.BLUE:
                     {
                         objName = "YBot - Blue";
                         break;

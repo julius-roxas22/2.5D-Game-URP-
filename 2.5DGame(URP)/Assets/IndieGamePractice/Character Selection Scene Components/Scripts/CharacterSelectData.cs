@@ -5,7 +5,7 @@ using UnityEngine;
 namespace IndieGamePractice
 {
 
-    public enum PlayableCharacterType
+    public enum _PlayableCharacterType
     {
         NONE,
         RED,
@@ -16,6 +16,6 @@ namespace IndieGamePractice
     [CreateAssetMenu(fileName = "Character Select Data", menuName = "IndieGamePractice/CreateCharacterSelect/CharacterSelect")]
     public class CharacterSelectData : ScriptableObject
     {
-        public PlayableCharacterType _CharacterSelectType;
+        public _PlayableCharacterType _CharacterSelectType;
     }
 }

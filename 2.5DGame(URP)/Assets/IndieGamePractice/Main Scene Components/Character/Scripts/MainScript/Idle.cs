@@ -9,8 +9,8 @@ namespace IndieGamePractice
     {
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            animator.SetBool(TransitionParameters.Jump.ToString(), false);
-            animator.SetBool(TransitionParameters.Attack.ToString(), false);
+            animator.SetBool(_TransitionParameters.Jump.ToString(), false);
+            animator.SetBool(_TransitionParameters.Attack.ToString(), false);
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
@@ -19,34 +19,34 @@ namespace IndieGamePractice
 
             if (control._MoveRight && control._MoveLeft)
             {
-                animator.SetBool(TransitionParameters.Move.ToString(), false);
+                animator.SetBool(_TransitionParameters.Move.ToString(), false);
                 return;
             }
 
             if (control._Attack)
             {
-                animator.SetBool(TransitionParameters.Attack.ToString(), true);
+                animator.SetBool(_TransitionParameters.Attack.ToString(), true);
             }
 
             if (control._Jump)
             {
-                animator.SetBool(TransitionParameters.Jump.ToString(), true);
+                animator.SetBool(_TransitionParameters.Jump.ToString(), true);
             }
 
             if (control._MoveRight)
             {
-                animator.SetBool(TransitionParameters.Move.ToString(), true);
+                animator.SetBool(_TransitionParameters.Move.ToString(), true);
             }
 
             if (control._MoveLeft)
             {
-                animator.SetBool(TransitionParameters.Move.ToString(), true);
+                animator.SetBool(_TransitionParameters.Move.ToString(), true);
             }
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            animator.SetBool(TransitionParameters.Attack.ToString(), false);
+            animator.SetBool(_TransitionParameters.Attack.ToString(), false);
         }
     }
 }

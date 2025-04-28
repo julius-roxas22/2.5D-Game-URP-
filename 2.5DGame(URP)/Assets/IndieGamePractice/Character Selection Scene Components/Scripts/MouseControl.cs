@@ -9,7 +9,7 @@ namespace IndieGamePractice
         [SerializeField] private CharacterSelectData _CharacterSelectData;
         private Ray ray;
         private RaycastHit hit;
-        public PlayableCharacterType _PlayableCharacter;
+        public _PlayableCharacterType _PlayableCharacter;
         private CharacterHoverLight hoverLight;
         private CharacterSelectLight selectLight;
         private GameObject whiteSeletion;
@@ -18,7 +18,7 @@ namespace IndieGamePractice
 
         private void Awake()
         {
-            _CharacterSelectData._CharacterSelectType = PlayableCharacterType.NONE;
+            _CharacterSelectData._CharacterSelectType = _PlayableCharacterType.NONE;
             hoverLight = FindObjectOfType<CharacterHoverLight>();
             selectLight = FindObjectOfType<CharacterSelectLight>();
 
@@ -41,13 +41,13 @@ namespace IndieGamePractice
                 }
                 else
                 {
-                    _PlayableCharacter = PlayableCharacterType.NONE;
+                    _PlayableCharacter = _PlayableCharacterType.NONE;
                 }
             }
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (_PlayableCharacter != PlayableCharacterType.NONE)
+                if (_PlayableCharacter != _PlayableCharacterType.NONE)
                 {
                     _CharacterSelectData._CharacterSelectType = _PlayableCharacter;
                     selectLight._GetSelectedLight.enabled = true;
@@ -59,11 +59,11 @@ namespace IndieGamePractice
 
                     whiteSeletion.SetActive(true);
                     whiteSeletion.transform.parent = control._SkinnedMesh.transform;
-                    whiteSeletion.transform.localPosition = new Vector3(0f, -0.05f, 0f);
+                    whiteSeletion.transform.localPosition = new Vector3(0f, -0.003f, 0f);
                 }
                 else
                 {
-                    _CharacterSelectData._CharacterSelectType = PlayableCharacterType.NONE;
+                    _CharacterSelectData._CharacterSelectType = _PlayableCharacterType.NONE;
                     selectLight._GetSelectedLight.enabled = false;
                     whiteSeletion.SetActive(false);
                 }
@@ -72,11 +72,11 @@ namespace IndieGamePractice
                 {
                     if (control.characterType == _CharacterSelectData._CharacterSelectType)
                     {
-                        control._SkinnedMesh.SetBool(TransitionParameters.ClickAnimation.ToString(), true);
+                        control._SkinnedMesh.SetBool(_TransitionParameters.ClickAnimation.ToString(), true);
                     }
                     else
                     {
-                        control._SkinnedMesh.SetBool(TransitionParameters.ClickAnimation.ToString(), false);
+                        control._SkinnedMesh.SetBool(_TransitionParameters.ClickAnimation.ToString(), false);
                     }
                 }
                 camController._GetAnimator.SetBool(_CharacterSelectData._CharacterSelectType.ToString(), true);
