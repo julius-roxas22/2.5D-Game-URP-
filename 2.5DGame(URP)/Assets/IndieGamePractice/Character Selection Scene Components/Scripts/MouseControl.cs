@@ -14,6 +14,8 @@ namespace IndieGamePractice
         private CharacterSelectLight selectLight;
         private GameObject whiteSeletion;
 
+        private CharacterSelectCamController camController;
+
         private void Awake()
         {
             _CharacterSelectData._CharacterSelectType = PlayableCharacterType.NONE;
@@ -22,6 +24,8 @@ namespace IndieGamePractice
 
             whiteSeletion = GameObject.Find("WhiteSelection");
             whiteSeletion.SetActive(false);
+
+            camController = FindAnyObjectByType<CharacterSelectCamController>();
         }
 
         private void Update()
@@ -75,6 +79,7 @@ namespace IndieGamePractice
                         control._SkinnedMesh.SetBool(TransitionParameters.ClickAnimation.ToString(), false);
                     }
                 }
+                camController._GetAnimator.SetBool(_CharacterSelectData._CharacterSelectType.ToString(), true);
             }
         }
     }
