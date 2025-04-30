@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebaaa156acf147744b76edcf194bad3e, type: 3}
-  m_Name: Player_HangingIdle_ToggleGravity_(OFF)
+  m_Name: Player_CrouchIdle_ToggleGravity(ON)
   m_EditorClassIdentifier: 
-  onEnabled: 0
+  onEnabled: 1
   onStart: 1
   onExit: 0

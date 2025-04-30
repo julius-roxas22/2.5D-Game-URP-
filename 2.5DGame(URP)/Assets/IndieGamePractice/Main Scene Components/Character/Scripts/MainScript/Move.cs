@@ -91,7 +91,7 @@ namespace IndieGamePractice
                 {
                     if (!control._RagdollParts.Contains(hit.collider))
                     {
-                        if (!isBodyPart(hit.collider))
+                        if (!isBodyPart(hit.collider) && !Ledge._IsLedge(hit.collider.gameObject))
                         {
                             return true;
                         }

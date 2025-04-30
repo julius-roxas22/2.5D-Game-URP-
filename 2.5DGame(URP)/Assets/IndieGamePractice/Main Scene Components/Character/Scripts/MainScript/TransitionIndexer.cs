@@ -29,6 +29,10 @@ namespace IndieGamePractice
             {
                 animator.SetInteger(_TransitionParameters.TransitionIndex.ToString(), index);
             }
+            else
+            {
+                animator.SetInteger(_TransitionParameters.TransitionIndex.ToString(), 0);
+            }
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
@@ -38,11 +42,15 @@ namespace IndieGamePractice
             {
                 animator.SetInteger(_TransitionParameters.TransitionIndex.ToString(), index);
             }
+            else
+            {
+                animator.SetInteger(_TransitionParameters.TransitionIndex.ToString(), 0);
+            }
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-
+            animator.SetInteger(_TransitionParameters.TransitionIndex.ToString(), 0);
         }
 
         private bool makeTransition(CharacterControl control)

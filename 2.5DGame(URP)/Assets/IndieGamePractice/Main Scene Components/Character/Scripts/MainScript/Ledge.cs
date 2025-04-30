@@ -7,5 +7,14 @@ namespace IndieGamePractice
     public class Ledge : MonoBehaviour
     {
         public Vector3 _Offset;
+
+        public static bool _IsLedge(GameObject obj)
+        {
+            if (null != obj.GetComponent<Ledge>())
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

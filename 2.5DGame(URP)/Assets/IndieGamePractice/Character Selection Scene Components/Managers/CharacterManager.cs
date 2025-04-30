@@ -17,7 +17,18 @@ namespace IndieGamePractice
                     return control;
                 }
             }
+            return null;
+        }
 
+        public CharacterControl _GetPlayableCharacters(Animator skinnedMesh)
+        {
+            foreach (CharacterControl control in _AllCharacters)
+            {
+                if (control._SkinnedMesh == skinnedMesh)
+                {
+                    return control;
+                }
+            }
             return null;
         }
     }
