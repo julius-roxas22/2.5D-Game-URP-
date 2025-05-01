@@ -12,6 +12,10 @@ namespace IndieGamePractice
 
         public void _TurnOff()
         {
+            transform.parent = null;
+            transform.position = Vector3.zero;
+            transform.rotation = Quaternion.identity;
+
             PoolManager._GetInstance._AddObject(this);
         }
 
@@ -26,12 +30,12 @@ namespace IndieGamePractice
 
         private void OnEnable()
         {
-            if(null != coroutine)
+            if (null != coroutine)
             {
                 StopCoroutine(coroutine);
             }
 
-            if(timeScheduledOff > 0f)
+            if (timeScheduledOff > 0f)
             {
                 coroutine = StartCoroutine(scheduledOff());
             }

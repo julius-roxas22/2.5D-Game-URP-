@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25568645cb69f014698ea12bc9f90d35, type: 3}
-  m_Name: Player_HangingIdle_TeleportOnLedge
+  m_Script: {fileID: 11500000, guid: b638dd852005c2c4cb40f695fd1e881b, type: 3}
+  m_Name: Player_HammerDown_ShakeCamera
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0.05, z: 0.3}
+  shakeTiming: 0.32

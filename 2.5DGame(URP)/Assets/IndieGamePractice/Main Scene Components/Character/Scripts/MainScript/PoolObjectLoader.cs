@@ -7,6 +7,8 @@ namespace IndieGamePractice
     public enum PoolObjectType
     {
         AttackInfo,
+        Hammer,
+        Hammer_VFX
     }
 
     public class PoolObjectLoader : MonoBehaviour
@@ -20,6 +22,16 @@ namespace IndieGamePractice
                 case PoolObjectType.AttackInfo:
                     {
                         obj = Instantiate(Resources.Load("AttackInfo", typeof(GameObject))) as GameObject;
+                        break;
+                    }
+                case PoolObjectType.Hammer:
+                    {
+                        obj = Instantiate(Resources.Load("ThorHammer", typeof(GameObject))) as GameObject;
+                        break;
+                    }
+                case PoolObjectType.Hammer_VFX:
+                    {
+                        obj = Instantiate(Resources.Load("VFX_HammerDown", typeof(GameObject))) as GameObject;
                         break;
                     }
             }

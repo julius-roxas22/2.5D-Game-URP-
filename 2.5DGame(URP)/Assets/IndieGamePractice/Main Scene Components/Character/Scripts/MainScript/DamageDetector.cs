@@ -48,7 +48,16 @@ namespace IndieGamePractice
 
                 if (info._Attacker == control)
                 {
-                    return;
+                    continue;
+                }
+
+                if (info._MustFaceAttacker)
+                {
+                    Vector3 vec = control.transform.position - info._Attacker.transform.position;
+                    if (vec.z * info._Attacker.transform.forward.z < 0f)
+                    {
+                        continue;
+                    }
                 }
 
                 if (info._MustCollide)

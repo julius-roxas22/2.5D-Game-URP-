@@ -31,6 +31,7 @@ namespace IndieGamePractice
         public List<Collider> _CollidingParts = new List<Collider>();
 
         private List<TriggerDetector> _AllTriggers = new List<TriggerDetector>();
+        private Dictionary<string, GameObject> childObjDictionaries = new Dictionary<string, GameObject>();
 
         [HideInInspector] public bool _MoveUp;
         [HideInInspector] public bool _MoveDown;
@@ -170,20 +171,21 @@ namespace IndieGamePractice
             float front = box.bounds.center.z + box.bounds.extents.z;
             float back = box.bounds.center.z - box.bounds.extents.z;
 
+            GameObject bottomFrontHor = createColliderEdge(new Vector3(0f, bottom, front));
+            GameObject bottomFrontVer = createColliderEdge(new Vector3(0f, bottom + 0.05f, front));
+            GameObject bottomBack = createColliderEdge(new Vector3(0f, bottom, back));
             GameObject topFront = createColliderEdge(new Vector3(0f, top, front));
 
-            GameObject bottomFront = createColliderEdge(new Vector3(0f, bottom, front));
-            GameObject bottomBack = createColliderEdge(new Vector3(0f, bottom, back));
-            _BottomSpheres.Add(bottomFront);
+            _BottomSpheres.Add(bottomFrontHor);
             _BottomSpheres.Add(bottomBack);
-            _FrontSpheres.Add(bottomFront);
+            _FrontSpheres.Add(bottomFrontVer);
             _FrontSpheres.Add(topFront);
 
-            float horSec = (bottomBack.transform.position - bottomFront.transform.position).magnitude / 5f;
-            float verSec = (bottomFront.transform.position - topFront.transform.position).magnitude / 9f;
-
+            float horSec = (bottomBack.transform.position - bottomFrontHor.transform.position).magnitude / 5f;
             createSphereEdges(bottomBack.transform.position, Vector3.forward, horSec, 4, _BottomSpheres);
-            createSphereEdges(bottomFront.transform.position, Vector3.up, verSec, 8, _FrontSpheres);
+
+            float verSec = (bottomFrontVer.transform.position - topFront.transform.position).magnitude / 9f;
+            createSphereEdges(bottomFrontVer.transform.position, Vector3.up, verSec, 8, _FrontSpheres);
         }
 
         private void createSphereEdges(Vector3 startPos, Vector3 dir, float sec, float iteration, List<GameObject> spheres)
@@ -228,6 +230,27 @@ namespace IndieGamePractice
                     return col.transform;
                 }
             }
+            return null;
+        }
+
+        public GameObject _GetChildObject(string target)
+        {
+            if (childObjDictionaries.ContainsKey(target))
+            {
+                return childObjDictionaries[target];
+            }
+
+            Transform[] arr = GetComponentsInChildren<Transform>();
+
+            foreach (Transform t in arr)
+            {
+                if (t.name == target)
+                {
+                    childObjDictionaries.Add(target, t.gameObject);
+                    return t.gameObject;
+                }
+            }
+
             return null;
         }
 
