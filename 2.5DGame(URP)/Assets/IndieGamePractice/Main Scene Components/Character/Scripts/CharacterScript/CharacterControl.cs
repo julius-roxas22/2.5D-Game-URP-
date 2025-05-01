@@ -43,8 +43,22 @@ namespace IndieGamePractice
         [HideInInspector] public float _GravityMultiplier;
         [HideInInspector] public float _PullMultiplier;
 
+        private AnimationProgress animationProgress;
+
         private Rigidbody rigidBody;
         private LedgeChecker ledgeChecker;
+
+        public AnimationProgress _GetAnimationProgress
+        {
+            get
+            {
+                if (null == animationProgress)
+                {
+                    animationProgress = GetComponent<AnimationProgress>();
+                }
+                return animationProgress;
+            }
+        }
 
         public LedgeChecker _GetLedgeChecker
         {

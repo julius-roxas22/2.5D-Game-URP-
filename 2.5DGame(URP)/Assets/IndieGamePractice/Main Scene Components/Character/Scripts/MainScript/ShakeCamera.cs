@@ -12,25 +12,28 @@ namespace IndieGamePractice
         private bool isShaking;
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
+            CharacterControl control = characterStateBase._GetCharacterControl(animator);
             if (shakeTiming == 0)
             {
                 CameraManager._GetInstance._ShakeCamera(0.45f);
-                isShaking = true;
+                control._GetAnimationProgress._IsCameraShaken = true;
             }
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            if (!isShaking && animatorStateInfo.normalizedTime >= shakeTiming)
+            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            if (!control._GetAnimationProgress._IsCameraShaken && animatorStateInfo.normalizedTime >= shakeTiming)
             {
                 CameraManager._GetInstance._ShakeCamera(0.45f);
-                isShaking = true;
+                control._GetAnimationProgress._IsCameraShaken = true;
             }
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            isShaking = false;
+            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            control._GetAnimationProgress._IsCameraShaken = false;
         }
     }
 }

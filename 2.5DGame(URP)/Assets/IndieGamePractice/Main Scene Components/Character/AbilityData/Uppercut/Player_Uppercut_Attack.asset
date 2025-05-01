@@ -16,7 +16,7 @@ MonoBehaviour:
   _EndAttackTime: 0.2
   _ColliderNames:
   - mixamorig:RightHand
-  _LaunchIntoAir: 1
+  _DeathType: 1
   _MustCollide: 1
   _MustFaceAttacker: 0
   _AttackRange: 0

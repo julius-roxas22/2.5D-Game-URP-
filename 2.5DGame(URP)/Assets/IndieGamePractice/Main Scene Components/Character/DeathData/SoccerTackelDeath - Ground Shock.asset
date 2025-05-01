@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc6f6c1e356e05948b5984c22c2a1da2, type: 3}
-  m_Name: SoccerTackelDeath
+  m_Name: SoccerTackelDeath - Ground Shock
   m_EditorClassIdentifier: 
-  _DamagedParts: 0100000003000000
-  _DeathAnimationController: {fileID: 9100000, guid: ba7010946d1e6694da2e348676aa9d21, type: 2}
+  _DamagedParts: 
+  _DeathAnimationController: {fileID: 9100000, guid: ba7010946d1e6694da2e348676aa9d21,
+    type: 2}
+  _DeathType: 2

@@ -10,7 +10,7 @@ namespace IndieGamePractice
         public float _StartAttackTime;
         public float _EndAttackTime;
         public List<string> _ColliderNames = new List<string>();
-        public bool _LaunchIntoAir;
+        public DeathType _DeathType;
         public bool _MustCollide;
         public bool _MustFaceAttacker;
         public float _AttackRange;

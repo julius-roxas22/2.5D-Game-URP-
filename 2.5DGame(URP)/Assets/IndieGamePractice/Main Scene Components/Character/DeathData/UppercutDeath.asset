@@ -15,4 +15,4 @@ MonoBehaviour:
   _DamagedParts: 
   _DeathAnimationController: {fileID: 9100000, guid: 351dcae917c66af46ba5dc706a3ea458,
     type: 2}
-  _LaunchIntoAir: 1
+  _DeathType: 1

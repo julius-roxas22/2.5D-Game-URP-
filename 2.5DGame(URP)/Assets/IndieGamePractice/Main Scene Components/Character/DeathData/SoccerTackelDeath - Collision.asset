@@ -9,15 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7758481dca58c4544836dd68c197eb1d, type: 3}
-  m_Name: Player_Smash_Landing_Attack
+  m_Script: {fileID: 11500000, guid: bc6f6c1e356e05948b5984c22c2a1da2, type: 3}
+  m_Name: SoccerTackelDeath - Collision
   m_EditorClassIdentifier: 
-  _StartAttackTime: 0.3
-  _EndAttackTime: 0.6
-  _ColliderNames: []
-  _DeathType: 2
-  _MustCollide: 0
-  _MustFaceAttacker: 0
-  _AttackRange: 2
-  _MaxHits: 10
-  onDebug: 0
+  _DamagedParts: 0100000003000000
+  _DeathAnimationController: {fileID: 9100000, guid: ba7010946d1e6694da2e348676aa9d21,
+    type: 2}

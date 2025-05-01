@@ -25,37 +25,30 @@ namespace IndieGamePractice
 
             foreach (DeathData data in loader._DeathData)
             {
-                if (info._LaunchIntoAir)
+                if (info._DeathType == data._DeathType)
                 {
-                    if (data._LaunchIntoAir)
+                    if (info._DeathType != DeathType.None)
                     {
                         candidates.Add(data._DeathAnimationController);
-                        break;
                     }
-                }
-                else if (!info._MustCollide)
-                {
-                    foreach (BodyPart part in data._DamagedParts)
+                    else if (!info._MustCollide)
                     {
-                        if (part == BodyPart.Lower || part == BodyPart.Leg)
-                        {
-                            candidates.Add(data._DeathAnimationController);
-                            break;
-                        }
+                        candidates.Add(data._DeathAnimationController);
                     }
-                }
-                else
-                {
-                    foreach (BodyPart part in data._DamagedParts)
+                    else
                     {
-                        if (part == damagedPart)
+                        foreach (BodyPart part in data._DamagedParts)
                         {
-                            candidates.Add(data._DeathAnimationController);
-                            break;
+                            if (part == damagedPart)
+                            {
+                                candidates.Add(data._DeathAnimationController);
+                                break;
+                            }
                         }
                     }
                 }
             }
+
             int index = Random.Range(0, candidates.Count);
             return candidates[index];
         }

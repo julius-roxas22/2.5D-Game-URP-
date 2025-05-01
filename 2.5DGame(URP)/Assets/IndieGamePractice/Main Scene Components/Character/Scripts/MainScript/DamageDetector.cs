@@ -8,9 +8,11 @@ namespace IndieGamePractice
     {
         private CharacterControl control;
         private BodyPart damagedBodyPart;
+        private int damageTaken;
 
         private void Awake()
         {
+            damageTaken = 0;
             control = GetComponent<CharacterControl>();
         }
 
@@ -99,6 +101,11 @@ namespace IndieGamePractice
 
         private void takeDamage(AttackInfo info)
         {
+            if (damageTaken > 0)
+            {
+                return;
+            }
+
             if (info._MustCollide)
             {
                 CameraManager._GetInstance._ShakeCamera(0.45f);
@@ -108,6 +115,8 @@ namespace IndieGamePractice
             info._CurrentHits++;
             control.GetComponent<BoxCollider>().enabled = false;
             control._GetRigidBody.useGravity = false;
+
+            damageTaken++;
         }
     }
 }

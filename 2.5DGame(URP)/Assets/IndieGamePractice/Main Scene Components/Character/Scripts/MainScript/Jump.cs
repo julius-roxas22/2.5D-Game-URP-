@@ -11,14 +11,14 @@ namespace IndieGamePractice
         [SerializeField] private float jumpTiming;
         [SerializeField] private float jumpForce;
         [SerializeField] private AnimationCurve pull;
-        private bool isJumped;
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
+            CharacterControl control = characterStateBase._GetCharacterControl(animator);
             if (jumpTiming == 0)
             {
-                characterStateBase._GetCharacterControl(animator)._GetRigidBody.AddForce(Vector3.up * jumpForce);
-                isJumped = true;
+                control._GetRigidBody.AddForce(Vector3.up * jumpForce);
+                control._GetAnimationProgress._IsJumped = true;
             }
             animator.SetBool(_TransitionParameters.Grounded.ToString(), false);
         }
@@ -26,10 +26,10 @@ namespace IndieGamePractice
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = characterStateBase._GetCharacterControl(animator);
-            if (!isJumped && animatorStateInfo.normalizedTime >= jumpTiming)
+            if (!control._GetAnimationProgress._IsJumped && animatorStateInfo.normalizedTime >= jumpTiming)
             {
-                characterStateBase._GetCharacterControl(animator)._GetRigidBody.AddForce(Vector3.up * jumpForce);
-                isJumped = true;
+                control._GetRigidBody.AddForce(Vector3.up * jumpForce);
+                control._GetAnimationProgress._IsJumped = true;
             }
             control._PullMultiplier = pull.Evaluate(animatorStateInfo.normalizedTime);
         }
@@ -38,7 +38,7 @@ namespace IndieGamePractice
         {
             CharacterControl control = characterStateBase._GetCharacterControl(animator);
             control._PullMultiplier = 0f;
-            isJumped = false;
+            control._GetAnimationProgress._IsJumped = false;
         }
     }
 }

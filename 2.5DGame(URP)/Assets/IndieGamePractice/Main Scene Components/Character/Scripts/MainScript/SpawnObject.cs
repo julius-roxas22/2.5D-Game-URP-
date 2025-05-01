@@ -12,7 +12,6 @@ namespace IndieGamePractice
         [SerializeField] private PoolObjectType objType;
         [SerializeField] private string parentObjSpawned;
         [SerializeField] private bool stickToParent;
-        private bool isSpawned;
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
@@ -20,27 +19,37 @@ namespace IndieGamePractice
             {
                 CharacterControl control = characterStateBase._GetCharacterControl(animator);
                 spawnObj(control);
-                isSpawned = true;
             }
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            if (!isSpawned && animatorStateInfo.normalizedTime >= spawnTiming)
+            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            if (!control._GetAnimationProgress._PoolObjectTypeList.Contains(objType))
             {
-                CharacterControl control = characterStateBase._GetCharacterControl(animator);
-                spawnObj(control);
-                isSpawned = true;
+                if (animatorStateInfo.normalizedTime >= spawnTiming)
+                {
+                    spawnObj(control);
+                }
             }
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            isSpawned = false;
+            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            if (control._GetAnimationProgress._PoolObjectTypeList.Contains(objType))
+            {
+                control._GetAnimationProgress._PoolObjectTypeList.Remove(objType);
+            }
         }
 
         private void spawnObj(CharacterControl control)
         {
+            if (control._GetAnimationProgress._PoolObjectTypeList.Contains(objType))
+            {
+                return;
+            }
+
             GameObject obj = PoolManager._GetInstance._InstantiateObject(objType);
 
             if (!string.IsNullOrEmpty(parentObjSpawned))
@@ -57,6 +66,8 @@ namespace IndieGamePractice
             }
 
             obj.SetActive(true);
+
+            control._GetAnimationProgress._PoolObjectTypeList.Add(objType);
         }
     }
 }

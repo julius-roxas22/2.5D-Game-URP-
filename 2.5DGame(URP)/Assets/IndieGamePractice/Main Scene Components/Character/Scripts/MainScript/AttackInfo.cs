@@ -10,7 +10,7 @@ namespace IndieGamePractice
         public Attack _AttackAbility;
         public List<string> _ColliderNames = new List<string>();
 
-        public bool _LaunchIntoAir;
+        public DeathType _DeathType;
         public bool _MustCollide;
         public bool _MustFaceAttacker;
         public bool _IsRegistered;
@@ -35,7 +35,7 @@ namespace IndieGamePractice
 
             _AttackAbility = attackAbility;
             _ColliderNames = attackAbility._ColliderNames;
-            _LaunchIntoAir = attackAbility._LaunchIntoAir;
+            _DeathType = attackAbility._DeathType;
             _MustCollide = attackAbility._MustCollide;
             _MustFaceAttacker = attackAbility._MustFaceAttacker;
             _AttackRange = attackAbility._AttackRange;

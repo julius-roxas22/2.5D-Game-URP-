@@ -15,7 +15,7 @@ MonoBehaviour:
   _StartAttackTime: 0.3
   _EndAttackTime: 0.4
   _ColliderNames: []
-  _LaunchIntoAir: 0
+  _DeathType: 2
   _MustCollide: 0
   _MustFaceAttacker: 1
   _AttackRange: 5

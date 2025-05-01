@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 6600859262486428400}
   - component: {fileID: 3913478452353410429}
   - component: {fileID: 7652418023278880375}
+  - component: {fileID: 3286477795377078363}
   m_Layer: 0
   m_Name: YBot - Red
   m_TagString: Untagged
@@ -339,6 +340,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d2fca6ac22efb34d88982d8673dfa25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3286477795377078363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6369664099610999902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fe43817063b9f942a0647d9732b4d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &422621841303055658
