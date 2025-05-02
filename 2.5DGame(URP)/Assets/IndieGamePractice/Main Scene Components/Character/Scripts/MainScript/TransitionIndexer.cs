@@ -93,7 +93,7 @@ namespace IndieGamePractice
                         }
                     case _TransitionConditionType.ATTACK:
                         {
-                            if (!control._Attack)
+                            if (!control._GetAnimationProgress._AttackTriggered)
                             {
                                 return false;
                             }

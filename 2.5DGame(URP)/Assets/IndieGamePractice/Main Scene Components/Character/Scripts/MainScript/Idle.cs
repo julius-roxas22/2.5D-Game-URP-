@@ -23,7 +23,7 @@ namespace IndieGamePractice
                 return;
             }
 
-            if (control._Attack)
+            if (control._GetAnimationProgress._AttackTriggered)
             {
                 animator.SetBool(_TransitionParameters.Attack.ToString(), true);
             }

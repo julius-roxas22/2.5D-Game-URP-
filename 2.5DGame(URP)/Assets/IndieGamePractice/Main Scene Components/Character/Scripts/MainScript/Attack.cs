@@ -53,7 +53,7 @@ namespace IndieGamePractice
             {
                 if (stateInfo.normalizedTime < _EndAttackTime + ((_EndAttackTime - _StartAttackTime) / 3))
                 {
-                    if (control._Attack)
+                    if (control._GetAnimationProgress._AttackTriggered)
                     {
                         animator.SetBool(_TransitionParameters.Attack.ToString(), true);
                     }

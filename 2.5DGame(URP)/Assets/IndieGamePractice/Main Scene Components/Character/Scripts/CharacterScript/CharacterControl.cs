@@ -157,7 +157,6 @@ namespace IndieGamePractice
                     {
                         col.gameObject.AddComponent<TriggerDetector>();
                     }
-
                 }
             }
         }

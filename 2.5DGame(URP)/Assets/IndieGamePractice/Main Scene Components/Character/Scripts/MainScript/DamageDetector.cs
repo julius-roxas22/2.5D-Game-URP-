@@ -90,8 +90,11 @@ namespace IndieGamePractice
                     {
                         if (colNames == col.name)
                         {
-                            damagedBodyPart = trigger.bodyPart;
-                            return true;
+                            if (col.transform.root.gameObject == info._Attacker.gameObject)
+                            {
+                                damagedBodyPart = trigger.bodyPart;
+                                return true;
+                            }
                         }
                     }
                 }
