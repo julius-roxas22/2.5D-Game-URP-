@@ -27,5 +27,14 @@ namespace IndieGamePractice
                 _IsGrabbingLedge = false;
             }
         }
+
+        public static bool _IsLedgeChecker(GameObject obj)
+        {
+            if (null == obj.GetComponent<LedgeChecker>())
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

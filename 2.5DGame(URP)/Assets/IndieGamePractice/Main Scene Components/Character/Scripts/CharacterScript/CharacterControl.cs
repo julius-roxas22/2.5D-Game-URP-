@@ -13,6 +13,8 @@ namespace IndieGamePractice
         Attack,
         ClickAnimation,
         TransitionIndex,
+        Turbo,
+        Turn,
     }
 
     public enum _IndieGamePracticeScenes
@@ -39,6 +41,7 @@ namespace IndieGamePractice
         [HideInInspector] public bool _MoveLeft;
         [HideInInspector] public bool _Jump;
         [HideInInspector] public bool _Attack;
+        [HideInInspector] public bool _Turbo;
 
         [HideInInspector] public float _GravityMultiplier;
         [HideInInspector] public float _PullMultiplier;

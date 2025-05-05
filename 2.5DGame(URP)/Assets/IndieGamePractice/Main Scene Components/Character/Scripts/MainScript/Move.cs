@@ -11,6 +11,7 @@ namespace IndieGamePractice
         [SerializeField] private float blockDistance;
         [SerializeField] private AnimationCurve speedGraph;
         [SerializeField] private bool constantMoved;
+        [SerializeField] private bool lockDirection;
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
@@ -69,7 +70,6 @@ namespace IndieGamePractice
                 {
                     control._CharacterMove(movementSpeed, speedGraph.Evaluate(stateInfo.normalizedTime));
                 }
-                control.transform.rotation = Quaternion.Euler(0f, 0, 0f);
             }
 
             if (control._MoveLeft)
@@ -79,6 +79,24 @@ namespace IndieGamePractice
                     control._CharacterMove(movementSpeed, speedGraph.Evaluate(stateInfo.normalizedTime));
                 }
                 control.transform.rotation = Quaternion.Euler(0f, 180, 0f);
+            }
+
+            CheckTurn(control);
+        }
+
+        private void CheckTurn(CharacterControl control)
+        {
+            if (!lockDirection)
+            {
+                if (control._MoveLeft)
+                {
+                    control.transform.rotation = Quaternion.Euler(0f, 180, 0f);
+                }
+
+                if (control._MoveRight)
+                {
+                    control.transform.rotation = Quaternion.Euler(0f, 0, 0f);
+                }
             }
         }
 
@@ -91,7 +109,9 @@ namespace IndieGamePractice
                 {
                     if (!control._RagdollParts.Contains(hit.collider))
                     {
-                        if (!isBodyPart(hit.collider) && !Ledge._IsLedge(hit.collider.gameObject))
+                        if (!isBodyPart(hit.collider)
+                            && !Ledge._IsLedge(hit.collider.gameObject)
+                            && !LedgeChecker._IsLedgeChecker(hit.collider.gameObject))
                         {
                             return true;
                         }

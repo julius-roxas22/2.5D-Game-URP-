@@ -14,6 +14,7 @@ namespace IndieGamePractice
             VirtualInputManager._GetInstance._MoveLeft = Input.GetKey(KeyCode.A) ? true : false;
             VirtualInputManager._GetInstance._Jump = Input.GetKey(KeyCode.Space) ? true : false;
             VirtualInputManager._GetInstance._Attack = Input.GetKey(KeyCode.Return) ? true : false;
+            VirtualInputManager._GetInstance._Turbo = Input.GetKey(KeyCode.LeftShift) ? true : false;
         }
     }
 }

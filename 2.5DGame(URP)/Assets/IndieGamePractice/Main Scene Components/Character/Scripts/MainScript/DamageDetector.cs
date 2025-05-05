@@ -116,8 +116,9 @@ namespace IndieGamePractice
 
             control._SkinnedMesh.runtimeAnimatorController = DeathAnimationManager._GetInstance._GetDeathController(damagedBodyPart, info);
             info._CurrentHits++;
-            control.GetComponent<BoxCollider>().enabled = false;
             control._GetRigidBody.useGravity = false;
+            control.GetComponent<BoxCollider>().enabled = false;
+            control._GetLedgeChecker.GetComponent<BoxCollider>().enabled = false;
 
             damageTaken++;
         }
