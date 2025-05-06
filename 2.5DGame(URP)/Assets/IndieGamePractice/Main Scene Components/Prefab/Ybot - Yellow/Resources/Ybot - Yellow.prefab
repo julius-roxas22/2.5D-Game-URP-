@@ -68,6 +68,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: YBot - Yellow
       objectReference: {fileID: 0}
+    - target: {fileID: 6600859262486428400, guid: 354402a46bfe16a47ba2f3c631393d47,
+        type: 3}
+      propertyPath: characterType
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

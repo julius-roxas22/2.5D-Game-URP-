@@ -22,6 +22,7 @@ namespace IndieGamePractice
 
         private void OnTriggerExit(Collider col)
         {
+            checkingLedge = col.gameObject.GetComponent<Ledge>();
             if (null != checkingLedge)
             {
                 _IsGrabbingLedge = false;

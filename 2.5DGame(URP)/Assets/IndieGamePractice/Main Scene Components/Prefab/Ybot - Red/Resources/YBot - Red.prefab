@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768d3feee1ba36447994c750288f0e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: 0
+  characterType: 1
   _SkinnedMesh: {fileID: 6104596286717038779}
   _BottomSpheres: []
   _FrontSpheres: []
@@ -316,6 +316,7 @@ MonoBehaviour:
   _MoveLeft: 0
   _Jump: 0
   _Attack: 0
+  _Turbo: 0
   _GravityMultiplier: 0
   _PullMultiplier: 0
 --- !u!114 &3913478452353410429
@@ -354,6 +355,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe43817063b9f942a0647d9732b4d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pressTime: 0
+  maxPressTime: 0
+  _PoolObjectTypeList: 
+  _IsJumped: 0
+  _IsCameraShaken: 0
+  _AttackTriggered: 0
+  _DisAllowEarlyTurn: 0
 --- !u!1001 &422621841303055658
 PrefabInstance:
   m_ObjectHideFlags: 0

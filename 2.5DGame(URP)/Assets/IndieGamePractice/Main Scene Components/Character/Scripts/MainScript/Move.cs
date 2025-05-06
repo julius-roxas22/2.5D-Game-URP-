@@ -12,10 +12,26 @@ namespace IndieGamePractice
         [SerializeField] private AnimationCurve speedGraph;
         [SerializeField] private bool constantMoved;
         [SerializeField] private bool lockDirection;
+        [SerializeField] private bool allowEarlyTurn;
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
+            CharacterControl control = characterStateBase._GetCharacterControl(animator);
 
+            if (allowEarlyTurn && !control._GetAnimationProgress._DisAllowEarlyTurn)
+            {
+                if (control._MoveLeft)
+                {
+                    control._FaceForward(false);
+                }
+
+                if (control._MoveRight)
+                {
+                    control._FaceForward(true);
+                }
+            }
+
+            control._GetAnimationProgress._DisAllowEarlyTurn = false;
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)

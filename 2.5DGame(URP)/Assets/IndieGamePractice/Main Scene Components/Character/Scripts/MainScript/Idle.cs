@@ -11,6 +11,10 @@ namespace IndieGamePractice
         {
             animator.SetBool(_TransitionParameters.Jump.ToString(), false);
             animator.SetBool(_TransitionParameters.Attack.ToString(), false);
+            animator.SetBool(_TransitionParameters.Move.ToString(), false);
+
+            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            control._GetAnimationProgress._DisAllowEarlyTurn = false;
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)

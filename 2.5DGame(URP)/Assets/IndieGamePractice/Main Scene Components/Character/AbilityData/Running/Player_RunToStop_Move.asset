@@ -40,3 +40,4 @@ MonoBehaviour:
     m_RotationOrder: 4
   constantMoved: 1
   lockDirection: 1
+  allowEarlyTurn: 0

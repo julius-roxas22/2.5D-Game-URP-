@@ -14,6 +14,7 @@ namespace IndieGamePractice
         [HideInInspector] public bool _IsJumped;
         [HideInInspector] public bool _IsCameraShaken;
         [HideInInspector] public bool _AttackTriggered;
+        [HideInInspector] public bool _DisAllowEarlyTurn;
 
         private void Awake()
         {
