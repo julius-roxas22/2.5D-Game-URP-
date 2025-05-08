@@ -31,6 +31,22 @@ namespace IndieGamePractice
             }
             return null;
         }
+
+        public CharacterControl _GetPlayableCharacters()
+        {
+            foreach (CharacterControl control in _AllCharacters)
+            {
+                ManualInput manualInput = control.GetComponent<ManualInput>();
+                if (null != manualInput)
+                {
+                    if (manualInput.enabled)
+                    {
+                        return control;
+                    }
+                }
+            }
+            return null;
+        }
     }
 }
 

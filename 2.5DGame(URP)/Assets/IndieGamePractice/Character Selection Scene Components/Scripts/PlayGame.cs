@@ -18,7 +18,7 @@ namespace IndieGamePractice
                 }
                 else
                 {
-                    Debug.Log("Pick you`re character");
+                    Debug.Log("Choose your hero!");
                 }
             }
         }

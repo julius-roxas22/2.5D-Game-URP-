@@ -20,8 +20,9 @@ namespace IndieGamePractice
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = CharacterManager._GetInstance._GetPlayableCharacters(animator);
-            control.transform.position = control._GetLedgeChecker._Ledge.transform.position + control._GetLedgeChecker._Ledge.transform.TransformDirection(offset);
-            control._SkinnedMesh.transform.position = control._GetLedgeChecker._Ledge.transform.position + control._GetLedgeChecker._Ledge.transform.TransformDirection(offset);
+            Ledge ledge = control._GetLedgeChecker._Ledge;
+            control.transform.position = ledge.transform.position + ledge.transform.TransformDirection(ledge._EndPosition);
+            control._SkinnedMesh.transform.position = control.transform.position;
             control._SkinnedMesh.transform.parent = control.transform;
         }
     }

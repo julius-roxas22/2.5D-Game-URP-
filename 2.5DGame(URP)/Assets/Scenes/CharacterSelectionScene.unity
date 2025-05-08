@@ -128,18 +128,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1878978499}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &191258275 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3403155414108249417, guid: bb95e4ac3b50da248b7bb3e1b43aca00,
-    type: 3}
-  m_PrefabInstance: {fileID: 75598823564560219}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &484266425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -635,18 +623,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36791042838727f4682ee5d9767a4549, type: 3}
---- !u!114 &1907548814 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6663537208003772324, guid: bb95e4ac3b50da248b7bb3e1b43aca00,
-    type: 3}
-  m_PrefabInstance: {fileID: 75598823564560219}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2123305989
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +884,7 @@ PrefabInstance:
     - target: {fileID: 8690502980729591018, guid: bb95e4ac3b50da248b7bb3e1b43aca00,
         type: 3}
       propertyPath: m_DefaultBlend.m_Time
-      value: 1.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8690502980729591018, guid: bb95e4ac3b50da248b7bb3e1b43aca00,
         type: 3}
@@ -923,7 +899,7 @@ PrefabInstance:
     - target: {fileID: 8690502980729591018, guid: bb95e4ac3b50da248b7bb3e1b43aca00,
         type: 3}
       propertyPath: m_Instructions.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8690502980729591018, guid: bb95e4ac3b50da248b7bb3e1b43aca00,
         type: 3}
@@ -948,12 +924,12 @@ PrefabInstance:
     - target: {fileID: 8690502980729591018, guid: bb95e4ac3b50da248b7bb3e1b43aca00,
         type: 3}
       propertyPath: m_Instructions.Array.data[0].m_FullHash
-      value: -153225821
+      value: 2037209748
       objectReference: {fileID: 0}
     - target: {fileID: 8690502980729591018, guid: bb95e4ac3b50da248b7bb3e1b43aca00,
         type: 3}
       propertyPath: m_Instructions.Array.data[1].m_FullHash
-      value: 393953240
+      value: 1190339625
       objectReference: {fileID: 0}
     - target: {fileID: 8690502980729591018, guid: bb95e4ac3b50da248b7bb3e1b43aca00,
         type: 3}
@@ -989,12 +965,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Instructions.Array.data[0].m_VirtualCamera
       value: 
-      objectReference: {fileID: 191258275}
+      objectReference: {fileID: 0}
     - target: {fileID: 8690502980729591018, guid: bb95e4ac3b50da248b7bb3e1b43aca00,
         type: 3}
       propertyPath: m_Instructions.Array.data[1].m_VirtualCamera
       value: 
-      objectReference: {fileID: 1907548814}
+      objectReference: {fileID: 0}
     - target: {fileID: 8690502980729591018, guid: bb95e4ac3b50da248b7bb3e1b43aca00,
         type: 3}
       propertyPath: m_Instructions.Array.data[2].m_VirtualCamera

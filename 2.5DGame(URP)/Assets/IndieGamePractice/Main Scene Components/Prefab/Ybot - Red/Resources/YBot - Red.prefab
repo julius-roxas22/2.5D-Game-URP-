@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressTime: 0
-  maxPressTime: 0
+  maxPressTime: 0.1
   _PoolObjectTypeList: 
   _IsJumped: 0
   _IsCameraShaken: 0
