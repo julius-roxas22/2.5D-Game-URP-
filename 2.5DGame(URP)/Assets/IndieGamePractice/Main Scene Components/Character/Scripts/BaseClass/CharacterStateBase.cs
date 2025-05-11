@@ -38,7 +38,7 @@ namespace IndieGamePractice
         {
             if (null == characterControl)
             {
-                characterControl = animator.GetComponentInParent<CharacterControl>();
+                characterControl = animator.transform.root.GetComponentInParent<CharacterControl>();
             }
             return characterControl;
         }

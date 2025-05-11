@@ -50,6 +50,19 @@ namespace IndieGamePractice
 
         private Rigidbody rigidBody;
         private LedgeChecker ledgeChecker;
+        private AIProgress aIProgress;
+
+        public AIProgress _GetAiProgress
+        {
+            get
+            {
+                if (null == aIProgress)
+                {
+                    aIProgress = GetComponentInChildren<AIProgress>();
+                }
+                return aIProgress;
+            }
+        }
 
         public AnimationProgress _GetAnimationProgress
         {
