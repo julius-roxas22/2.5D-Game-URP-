@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84d54107d22e364ba74d9cf3f8fbcde, type: 3}
   m_Name: Player_Fall_Move
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  movementSpeed: 2
   blockDistance: 0.25
   speedGraph:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -29,8 +29,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -39,3 +39,5 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   constantMoved: 0
+  lockDirection: 0
+  allowEarlyTurn: 0

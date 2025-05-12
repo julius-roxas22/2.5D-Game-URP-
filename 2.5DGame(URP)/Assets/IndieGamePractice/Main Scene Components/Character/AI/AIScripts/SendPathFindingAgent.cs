@@ -5,6 +5,13 @@ using UnityEngine.AI;
 
 namespace IndieGamePractice
 {
+
+    public enum AITransitions
+    {
+        start_walk,
+        jump_platform,
+    }
+
     [CreateAssetMenu(fileName = "New Ability Data", menuName = "IndieGamePractice/Create/AI_Ability/SendPathFindingAgent")]
     public class SendPathFindingAgent : StateData
     {
@@ -26,12 +33,16 @@ namespace IndieGamePractice
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-
+            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            if (control._GetAiProgress.agent._StartWalk)
+            {
+                animator.SetBool(AITransitions.start_walk.ToString(), true);
+            }
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-
+            animator.SetBool(AITransitions.start_walk.ToString(), false);
         }
     }
 }
