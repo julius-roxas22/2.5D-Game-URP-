@@ -29,7 +29,7 @@ namespace IndieGamePractice
             CharacterControl control = characterStateBase._GetCharacterControl(animator);
 
             float dist = (control._GetAiProgress.agent._StartSphere.transform.position - control.transform.position).sqrMagnitude;
-            if (dist < 0.5f)
+            if (dist < 0.01f)
             {
                 control._MoveRight = false;
                 control._MoveLeft = false;

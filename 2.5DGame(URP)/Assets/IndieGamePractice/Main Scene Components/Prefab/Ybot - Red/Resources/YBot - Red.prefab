@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5815346144941278515}
   - component: {fileID: 1635726205999603637}
   - component: {fileID: 1168043303368046106}
+  - component: {fileID: 3475814366482093398}
   m_Layer: 0
   m_Name: LedgeChecker
   m_TagString: Untagged
@@ -120,6 +121,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _IsGrabbingLedge: 0
   _Ledge: {fileID: 0}
+--- !u!114 &3475814366482093398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2308812884292440306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8840ec3604403d740adaf7c6e434d259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _CollidingParts: []
+  bodyPart: 0
 --- !u!1 &3394570590300505942
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,6 +324,7 @@ MonoBehaviour:
   - {fileID: 3677828841243373611}
   - {fileID: 2024694539856004984}
   - {fileID: 3723255575310369647}
+  - {fileID: 1635726205999603637}
   _CollidingParts: []
   _MoveUp: 0
   _MoveDown: 0

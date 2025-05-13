@@ -18,17 +18,17 @@ namespace IndieGamePractice
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = characterStateBase._GetCharacterControl(animator);
-            AIProgress ai = control._GetAiProgress;
+            //AIProgress ai = control._GetAiProgress;
 
             if (null == control._GetAiProgress.agent)
             {
                 GameObject obj = Instantiate(Resources.Load("PathFindingAgent", typeof(GameObject))) as GameObject;
-                ai.agent = obj.GetComponent<PathFindingAgent>();
+                control._GetAiProgress.agent = obj.GetComponent<PathFindingAgent>();
             }
 
-            ai.agent.GetComponent<NavMeshAgent>().enabled = false;
-            ai.agent.transform.position = control.transform.position;
-            ai.agent._GotoTarget();
+            control._GetAiProgress.agent.GetComponent<NavMeshAgent>().enabled = false;
+            control._GetAiProgress.agent.transform.position = control.transform.position;
+            control._GetAiProgress.agent._GotoTarget();
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)

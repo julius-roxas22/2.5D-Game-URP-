@@ -33,7 +33,7 @@ namespace IndieGamePractice
 
             float bottomDist = control._GetAiProgress.agent._EndSphere.transform.position.y - control._BottomSpheres[0].transform.position.y;
 
-            if (topDist < 3f && bottomDist > 0.55f)
+            if (topDist < 1.5f && bottomDist > 0.55f)
             {
                 if (control._IsFacingForward())
                 {
@@ -53,6 +53,9 @@ namespace IndieGamePractice
                 control._MoveLeft = false;
                 control._Jump = false;
                 control._MoveUp = false;
+
+                animator.gameObject.SetActive(false);
+                animator.gameObject.SetActive(true);
             }
         }
 
