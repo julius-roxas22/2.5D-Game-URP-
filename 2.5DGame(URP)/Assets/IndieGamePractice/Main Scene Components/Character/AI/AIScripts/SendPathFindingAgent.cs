@@ -10,6 +10,7 @@ namespace IndieGamePractice
     {
         start_walk,
         jump_platform,
+        fall_platform
     }
 
     [CreateAssetMenu(fileName = "New Ability Data", menuName = "IndieGamePractice/Create/AI_Ability/SendPathFindingAgent")]

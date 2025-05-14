@@ -29,22 +29,38 @@ namespace IndieGamePractice
             CharacterControl control = characterStateBase._GetCharacterControl(animator);
 
             float dist = (control._GetAiProgress.agent._StartSphere.transform.position - control.transform.position).sqrMagnitude;
-            if (dist < 0.01f)
-            {
-                control._MoveRight = false;
-                control._MoveLeft = false;
 
-                if (control._GetAiProgress.agent._StartSphere.transform.position.y < control._GetAiProgress.agent._EndSphere.transform.position.y)
+
+            if (control._GetAiProgress.agent._StartSphere.transform.position.y < control._GetAiProgress.agent._EndSphere.transform.position.y)
+            {
+                if (dist < 0.01f)
                 {
+                    control._MoveRight = false;
+                    control._MoveLeft = false;
+
                     animator.SetBool(AITransitions.jump_platform.ToString(), true);
                 }
+            }
 
+            if (control._GetAiProgress.agent._StartSphere.transform.position.y > control._GetAiProgress.agent._EndSphere.transform.position.y)
+            {
+                animator.SetBool(AITransitions.fall_platform.ToString(), true);
+            }
+
+            if (control._GetAiProgress.agent._StartSphere.transform.position.y == control._GetAiProgress.agent._EndSphere.transform.position.y)
+            {
+                if (dist < 0.6f)
+                {
+                    control._MoveRight = false;
+                    control._MoveLeft = false;
+                }
             }
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             animator.SetBool(AITransitions.jump_platform.ToString(), false);
+            animator.SetBool(AITransitions.fall_platform.ToString(), false);
         }
     }
 }
