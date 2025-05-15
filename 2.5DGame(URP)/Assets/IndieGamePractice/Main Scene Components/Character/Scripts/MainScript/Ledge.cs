@@ -17,5 +17,14 @@ namespace IndieGamePractice
             }
             return false;
         }
+
+        public static bool _IsCharacter(GameObject obj)
+        {
+            if (null != obj.transform.root.GetComponent<CharacterControl>())
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

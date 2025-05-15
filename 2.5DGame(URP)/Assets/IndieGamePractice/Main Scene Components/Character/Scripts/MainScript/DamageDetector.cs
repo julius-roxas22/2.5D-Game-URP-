@@ -8,11 +8,11 @@ namespace IndieGamePractice
     {
         private CharacterControl control;
         private BodyPart damagedBodyPart;
-        private int damageTaken;
+        [HideInInspector] public int _DamageTaken;
 
         private void Awake()
         {
-            damageTaken = 0;
+            _DamageTaken = 0;
             control = GetComponent<CharacterControl>();
         }
 
@@ -104,7 +104,7 @@ namespace IndieGamePractice
 
         private void takeDamage(AttackInfo info)
         {
-            if (damageTaken > 0)
+            if (_DamageTaken > 0)
             {
                 return;
             }
@@ -120,7 +120,7 @@ namespace IndieGamePractice
             control.GetComponent<BoxCollider>().enabled = false;
             control._GetLedgeChecker.GetComponent<BoxCollider>().enabled = false;
 
-            damageTaken++;
+            _DamageTaken++;
         }
     }
 }

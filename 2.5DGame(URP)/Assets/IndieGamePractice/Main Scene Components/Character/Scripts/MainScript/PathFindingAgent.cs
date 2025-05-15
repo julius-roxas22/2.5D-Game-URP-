@@ -41,7 +41,10 @@ namespace IndieGamePractice
 
             if (moveCoroutines.Count != 0)
             {
-                StopCoroutine(moveCoroutines[0]);
+                if (null != moveCoroutines[0])
+                {
+                    StopCoroutine(moveCoroutines[0]);
+                }
                 moveCoroutines.RemoveAt(0);
             }
 

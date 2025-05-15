@@ -51,6 +51,19 @@ namespace IndieGamePractice
         private Rigidbody rigidBody;
         private LedgeChecker ledgeChecker;
         private AIProgress aIProgress;
+        private DamageDetector damageDetector;
+
+        public DamageDetector _GetDamageDetector
+        {
+            get
+            {
+                if(null == damageDetector)
+                {
+                    damageDetector = GetComponent<DamageDetector>();
+                }
+                return damageDetector;
+            }
+        }
 
         public AIProgress _GetAiProgress
         {

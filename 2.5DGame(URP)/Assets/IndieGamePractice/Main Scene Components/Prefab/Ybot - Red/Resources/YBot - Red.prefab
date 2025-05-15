@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 3913478452353410429}
   - component: {fileID: 7652418023278880375}
   - component: {fileID: 3286477795377078363}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: YBot - Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d2fca6ac22efb34d88982d8673dfa25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _DamageTaken: 0
 --- !u!114 &3286477795377078363
 MonoBehaviour:
   m_ObjectHideFlags: 0

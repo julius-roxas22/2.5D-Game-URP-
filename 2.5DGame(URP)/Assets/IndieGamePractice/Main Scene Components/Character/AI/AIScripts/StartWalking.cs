@@ -30,7 +30,6 @@ namespace IndieGamePractice
 
             float dist = (control._GetAiProgress.agent._StartSphere.transform.position - control.transform.position).sqrMagnitude;
 
-
             if (control._GetAiProgress.agent._StartSphere.transform.position.y < control._GetAiProgress.agent._EndSphere.transform.position.y)
             {
                 if (dist < 0.01f)
@@ -53,6 +52,31 @@ namespace IndieGamePractice
                 {
                     control._MoveRight = false;
                     control._MoveLeft = false;
+
+                    float playerDist = (control.transform.position - CharacterManager._GetInstance._GetPlayableCharacters().transform.position).sqrMagnitude;
+                    if (playerDist > 1.5f)
+                    {
+                        animator.gameObject.SetActive(false);
+                        animator.gameObject.SetActive(true);
+                    }
+                    else
+                    {
+                        if (CharacterManager._GetInstance._GetPlayableCharacters()._GetDamageDetector._DamageTaken == 0)
+                        {
+                            if (control._IsFacingForward())
+                            {
+                                control._MoveRight = true;
+                                control._MoveLeft = false;
+                                control._Attack = true;
+                            }
+                            else
+                            {
+                                control._MoveRight = false;
+                                control._MoveLeft = true;
+                                control._Attack = true;
+                            }
+                        }
+                    }
                 }
             }
         }
