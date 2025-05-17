@@ -30,7 +30,6 @@ namespace IndieGamePractice
         public List<GameObject> _BottomSpheres = new List<GameObject>();
         public List<GameObject> _FrontSpheres = new List<GameObject>();
         public List<Collider> _RagdollParts = new List<Collider>();
-        public List<Collider> _CollidingParts = new List<Collider>();
 
         private List<TriggerDetector> _AllTriggers = new List<TriggerDetector>();
         private Dictionary<string, GameObject> childObjDictionaries = new Dictionary<string, GameObject>();
@@ -57,7 +56,7 @@ namespace IndieGamePractice
         {
             get
             {
-                if(null == damageDetector)
+                if (null == damageDetector)
                 {
                     damageDetector = GetComponent<DamageDetector>();
                 }
@@ -179,12 +178,15 @@ namespace IndieGamePractice
             {
                 if (col.gameObject != gameObject)
                 {
-                    col.isTrigger = true;
-                    _RagdollParts.Add(col);
-
-                    if (null == col.GetComponent<TriggerDetector>())
+                    if (null == col.GetComponent<LedgeChecker>())
                     {
-                        col.gameObject.AddComponent<TriggerDetector>();
+                        col.isTrigger = true;
+                        _RagdollParts.Add(col);
+
+                        if (null == col.GetComponent<TriggerDetector>())
+                        {
+                            col.gameObject.AddComponent<TriggerDetector>();
+                        }
                     }
                 }
             }
