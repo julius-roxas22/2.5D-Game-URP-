@@ -25,11 +25,14 @@ namespace IndieGamePractice
 
     public class CharacterControl : MonoBehaviour
     {
+        [Header("Setup")]
         public _PlayableCharacterType characterType;
         public Animator _SkinnedMesh;
         public List<GameObject> _BottomSpheres = new List<GameObject>();
         public List<GameObject> _FrontSpheres = new List<GameObject>();
         public List<Collider> _RagdollParts = new List<Collider>();
+        public GameObject _LeftHand;
+        public GameObject _RightHand;
 
         private List<TriggerDetector> _AllTriggers = new List<TriggerDetector>();
         private Dictionary<string, GameObject> childObjDictionaries = new Dictionary<string, GameObject>();

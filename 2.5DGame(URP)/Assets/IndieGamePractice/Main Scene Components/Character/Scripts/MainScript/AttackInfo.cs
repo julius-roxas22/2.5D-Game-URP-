@@ -8,7 +8,8 @@ namespace IndieGamePractice
     {
         public CharacterControl _Attacker;
         public Attack _AttackAbility;
-        public List<string> _ColliderNames = new List<string>();
+        public List<_AttackPartType> _AttackPartTypes = new List<_AttackPartType>();
+        //public List<string> _ColliderNames = new List<string>();
 
         public DeathType _DeathType;
         public bool _MustCollide;
@@ -34,7 +35,8 @@ namespace IndieGamePractice
             _IsRegistered = true;
 
             _AttackAbility = attackAbility;
-            _ColliderNames = attackAbility._ColliderNames;
+            //_ColliderNames = attackAbility._ColliderNames;
+            _AttackPartTypes = attackAbility._AttackPartTypes;
             _DeathType = attackAbility._DeathType;
             _MustCollide = attackAbility._MustCollide;
             _MustFaceAttacker = attackAbility._MustFaceAttacker;

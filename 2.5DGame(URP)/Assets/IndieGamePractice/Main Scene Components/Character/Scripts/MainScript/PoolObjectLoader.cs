@@ -35,11 +35,6 @@ namespace IndieGamePractice
                         obj = Instantiate(Resources.Load("VFX_HammerDown", typeof(GameObject))) as GameObject;
                         break;
                     }
-                case PoolObjectType.Trail_Renderer:
-                    {
-                        obj = Instantiate(Resources.Load("TrailRendererVFX", typeof(GameObject))) as GameObject;
-                        break;
-                    }
             }
             return obj.GetComponent<PoolObject>();
         }
