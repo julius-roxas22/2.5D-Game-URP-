@@ -1047,7 +1047,7 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: ClickAnimation
     m_Type: 4
@@ -1900,7 +1900,7 @@ AnimatorStateMachine:
     m_Position: {x: 400, y: -140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3434007129322536580}
-    m_Position: {x: 550, y: 130, z: 0}
+    m_Position: {x: 540, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 748129889663119230}
     m_Position: {x: 260, y: 730, z: 0}
