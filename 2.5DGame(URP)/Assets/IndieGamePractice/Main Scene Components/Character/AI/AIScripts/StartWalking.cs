@@ -59,6 +59,8 @@ namespace IndieGamePractice
                         animator.gameObject.SetActive(false);
                         animator.gameObject.SetActive(true);
                     }
+
+                    #region temporary ai attack (currently disabled)
                     //else
                     //{
                     //    if (CharacterManager._GetInstance._GetPlayableCharacters()._GetDamageDetector._DamageTaken == 0)
@@ -77,6 +79,7 @@ namespace IndieGamePractice
                     //        }
                     //    }
                     //}
+                    #endregion
                 }
             }
         }

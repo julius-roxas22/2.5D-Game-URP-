@@ -54,6 +54,19 @@ namespace IndieGamePractice
         private LedgeChecker ledgeChecker;
         private AIProgress aIProgress;
         private DamageDetector damageDetector;
+        private AIController aiController;
+
+        public AIController _GetAiController
+        {
+            get
+            {
+                if (null == aiController)
+                {
+                    aiController = GetComponentInChildren<AIController>();
+                }
+                return aiController;
+            }
+        }
 
         public DamageDetector _GetDamageDetector
         {
