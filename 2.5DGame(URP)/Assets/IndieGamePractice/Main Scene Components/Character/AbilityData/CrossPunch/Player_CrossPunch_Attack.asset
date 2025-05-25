@@ -9,6 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 250b2472783ab974b801f7f8c730149b, type: 3}
-  m_Name: AI_JumpPlatform
+  m_Script: {fileID: 11500000, guid: 7758481dca58c4544836dd68c197eb1d, type: 3}
+  m_Name: Player_CrossPunch_Attack
   m_EditorClassIdentifier: 
+  _StartAttackTime: 0.48
+  _EndAttackTime: 0.73
+  _AttackPartTypes: 01000000
+  _DeathType: 0
+  _MustCollide: 1
+  _MustFaceAttacker: 0
+  _AttackRange: 0
+  _MaxHits: 1
+  onDebug: 0

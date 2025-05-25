@@ -59,24 +59,24 @@ namespace IndieGamePractice
                         animator.gameObject.SetActive(false);
                         animator.gameObject.SetActive(true);
                     }
-                    else
-                    {
-                        if (CharacterManager._GetInstance._GetPlayableCharacters()._GetDamageDetector._DamageTaken == 0)
-                        {
-                            if (control._IsFacingForward())
-                            {
-                                control._MoveRight = true;
-                                control._MoveLeft = false;
-                                control._Attack = true;
-                            }
-                            else
-                            {
-                                control._MoveRight = false;
-                                control._MoveLeft = true;
-                                control._Attack = true;
-                            }
-                        }
-                    }
+                    //else
+                    //{
+                    //    if (CharacterManager._GetInstance._GetPlayableCharacters()._GetDamageDetector._DamageTaken == 0)
+                    //    {
+                    //        if (control._IsFacingForward())
+                    //        {
+                    //            control._MoveRight = true;
+                    //            control._MoveLeft = false;
+                    //            control._Attack = true;
+                    //        }
+                    //        else
+                    //        {
+                    //            control._MoveRight = false;
+                    //            control._MoveLeft = true;
+                    //            control._Attack = true;
+                    //        }
+                    //    }
+                    //}
                 }
             }
         }

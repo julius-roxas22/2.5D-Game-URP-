@@ -465,9 +465,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.17971826
+  m_TransitionDuration: 0.1310988
   m_TransitionOffset: 0
-  m_ExitTime: 0.85022813
+  m_ExitTime: 0.9303421
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1603,10 +1603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allAbilitiesData:
-  - {fileID: 11400000, guid: 657ce47fe72a72748bf656d70407141e, type: 2}
-  - {fileID: 11400000, guid: 1c029a0d8df311342845cb39618a0fb9, type: 2}
-  - {fileID: 11400000, guid: 3e22401f4fbe68045a59dbf2ed651647, type: 2}
-  - {fileID: 11400000, guid: e67265887edc62b45baee675be6ed51d, type: 2}
+  - {fileID: 11400000, guid: f6a0e94e6c333d5489cb5460429ea07a, type: 2}
 --- !u!114 &4051131788245117938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2207,8 +2204,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HammerDown - Ending
-  m_Speed: 1.1
+  m_Name: CrossPunch
+  m_Speed: 1.6
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5228598017939062469}
@@ -2222,7 +2219,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: cebc61d731237c64b933d738c91cda4f,
+  m_Motion: {fileID: -203655887218126122, guid: 92be88a1b6ff15842a9a7141a9825cca,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
