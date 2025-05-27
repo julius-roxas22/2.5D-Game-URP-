@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 898bec7f09ea1b94f9a4e8b1ab100500, type: 3}
-  m_Name: AI_AITransitionConditions
+  m_Name: AI_AITransitionCondition(Walk_to_Run)
   m_EditorClassIdentifier: 
-  _AICondition: 0
-  _NextAIType: 0
+  _AICondition: 1
+  _NextAIType: 1

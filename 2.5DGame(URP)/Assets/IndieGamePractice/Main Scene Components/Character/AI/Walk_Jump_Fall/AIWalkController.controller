@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allAbilitiesData:
   - {fileID: 11400000, guid: ff994e7b83dcdef4da2660bc0672b94b, type: 2}
+  - {fileID: 11400000, guid: 4b8719fdbc4f97f438157eb8b2adb4d9, type: 2}
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -183,7 +184,7 @@ AnimatorStateMachine:
     m_Position: {x: 282.8734, y: 203.60254, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6886400751155235374}
-    m_Position: {x: 449.2476, y: 293.82965, z: 0}
+    m_Position: {x: 450, y: 290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5370363201158683270}
     m_Position: {x: 360, y: 430, z: 0}

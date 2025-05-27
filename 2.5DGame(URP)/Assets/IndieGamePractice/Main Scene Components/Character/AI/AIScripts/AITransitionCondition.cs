@@ -8,6 +8,7 @@ namespace IndieGamePractice
     public enum AICondition
     {
         RUN_TO_WALK,
+        WALK_TO_RUN
     }
 
     [CreateAssetMenu(fileName = "New Ability Data", menuName = "IndieGamePractice/Create/AI_Ability/AITransitionCondition")]
@@ -39,10 +40,17 @@ namespace IndieGamePractice
 
         private bool TransitionToNextAI(CharacterControl control)
         {
+            float dist = (control._GetAiProgress.agent._StartSphere.transform.position - control.transform.position).sqrMagnitude;
             if (_AICondition == AICondition.RUN_TO_WALK)
             {
-                float dist = (control._GetAiProgress.agent._StartSphere.transform.position - control.transform.position).sqrMagnitude;
                 if (dist < 2f)
+                {
+                    return true;
+                }
+            }
+            else if (_AICondition == AICondition.WALK_TO_RUN)
+            {
+                if (dist > 2f)
                 {
                     return true;
                 }
