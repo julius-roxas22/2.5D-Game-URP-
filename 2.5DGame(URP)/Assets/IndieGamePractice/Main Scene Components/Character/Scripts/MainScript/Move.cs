@@ -14,6 +14,10 @@ namespace IndieGamePractice
         [SerializeField] private bool lockDirection;
         [SerializeField] private bool allowEarlyTurn;
 
+        [Header("Momentum")]
+        [SerializeField] private bool useMomentum;
+        [SerializeField] private float maxMomentum;
+
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = characterStateBase._GetCharacterControl(animator);
@@ -32,25 +36,73 @@ namespace IndieGamePractice
             }
 
             control._GetAnimationProgress._DisAllowEarlyTurn = false;
+            control._GetAnimationProgress._AirMomentum = 0f;
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = characterStateBase._GetCharacterControl(animator);
 
-            if (constantMoved)
+            if (useMomentum)
             {
-                constantMove(control, animator, animatorStateInfo);
+                momentum(control, animatorStateInfo);
             }
             else
             {
-                controlledMove(control, animator, animatorStateInfo);
+                if (constantMoved)
+                {
+                    constantMove(control, animator, animatorStateInfo);
+                }
+                else
+                {
+                    controlledMove(control, animator, animatorStateInfo);
+                }
             }
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
+            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            control._GetAnimationProgress._AirMomentum = 0f;
+        }
 
+        private void momentum(CharacterControl control, AnimatorStateInfo stateInfo)
+        {
+            if (control._MoveRight)
+            {
+                control._GetAnimationProgress._AirMomentum += speedGraph.Evaluate(stateInfo.normalizedTime) * Time.deltaTime;
+            }
+
+            if (control._MoveLeft)
+            {
+                control._GetAnimationProgress._AirMomentum -= speedGraph.Evaluate(stateInfo.normalizedTime) * Time.deltaTime;
+            }
+
+            if (Mathf.Abs(control._GetAnimationProgress._AirMomentum) >= maxMomentum)
+            {
+                if (control._GetAnimationProgress._AirMomentum > 0f)
+                {
+                    control._GetAnimationProgress._AirMomentum = maxMomentum;
+                }
+                else if (control._GetAnimationProgress._AirMomentum < 0f)
+                {
+                    control._GetAnimationProgress._AirMomentum = -maxMomentum;
+                }
+            }
+
+            if (control._GetAnimationProgress._AirMomentum > 0f)
+            {
+                control._FaceForward(true);
+            }
+            else if (control._GetAnimationProgress._AirMomentum < 0f)
+            {
+                control._FaceForward(false);
+            }
+
+            if (!checkFront(control))
+            {
+                control._CharacterMove(movementSpeed, Mathf.Abs(control._GetAnimationProgress._AirMomentum));
+            }
         }
 
         private void constantMove(CharacterControl control, Animator animator, AnimatorStateInfo stateInfo)

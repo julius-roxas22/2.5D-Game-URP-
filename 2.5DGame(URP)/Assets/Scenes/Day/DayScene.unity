@@ -1239,6 +1239,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: YBot - Red
       objectReference: {fileID: 0}
+    - target: {fileID: 7273386312197066951, guid: e2baee533ba73cd4aafe38b934d9f062,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8937371159237957465, guid: e2baee533ba73cd4aafe38b934d9f062,
         type: 3}
       propertyPath: m_LocalPosition.x
