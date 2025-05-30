@@ -17,6 +17,8 @@ namespace IndieGamePractice
         public List<Collider> _CollidingParts = new List<Collider>();
         public BodyPart bodyPart;
         private CharacterControl owner;
+        [HideInInspector] public Vector3 _LastPosition;
+        [HideInInspector] public Quaternion _LastRotation;
 
         private void Awake()
         {

@@ -198,6 +198,14 @@ namespace IndieGamePractice
                     {
                         col.isTrigger = true;
                         _RagdollParts.Add(col);
+                        col.attachedRigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+                        col.attachedRigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+
+                        CharacterJoint joint = col.GetComponentInChildren<CharacterJoint>();
+                        if (null != joint)
+                        {
+                            joint.enableProjection = false;
+                        }
 
                         if (null == col.GetComponent<TriggerDetector>())
                         {
@@ -210,15 +218,34 @@ namespace IndieGamePractice
 
         public void _TurnOnRagdoll()
         {
+            Transform[] arr = GetComponentsInChildren<Transform>();
+
+            foreach (Transform t in arr)
+            {
+                t.gameObject.layer = LayerMask.NameToLayer("DEADBODY");
+            }
+
+            foreach (Collider col in _RagdollParts)
+            {
+                TriggerDetector trigger = col.GetComponent<TriggerDetector>();
+                trigger._LastPosition = col.transform.localPosition;
+                trigger._LastRotation = col.transform.localRotation;
+            }
+
             _GetRigidBody.useGravity = false;
             _GetRigidBody.velocity = Vector3.zero;
             GetComponent<BoxCollider>().enabled = false;
             _SkinnedMesh.enabled = false;
             _SkinnedMesh.avatar = null;
+
             foreach (Collider col in _RagdollParts)
             {
                 col.isTrigger = false;
                 col.attachedRigidbody.velocity = Vector3.zero;
+
+                TriggerDetector trigger = col.GetComponent<TriggerDetector>();
+                col.transform.localPosition = trigger._LastPosition;
+                col.transform.localRotation = trigger._LastRotation;
             }
         }
 

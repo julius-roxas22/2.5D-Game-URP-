@@ -182,6 +182,8 @@ MonoBehaviour:
   _IsCameraShaken: 0
   _AttackTriggered: 0
   _DisAllowEarlyTurn: 0
+  _RagdollTriggered: 0
+  _AirMomentum: 0
 --- !u!1 &2352300414802823053
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 0
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &7137505710739643778
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,9 +725,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &7987145387179871017
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -761,7 +765,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -784,6 +788,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 0
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &459475552312582307 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8817898888258712963, guid: ed985dfa75561d047a86b6648a3d11f8,
@@ -837,9 +843,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &163798093290984043
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -877,7 +883,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -900,6 +906,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 0
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &560723201446636255 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -290750445479886849, guid: ed985dfa75561d047a86b6648a3d11f8,
@@ -953,9 +961,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &7143131562138776600
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -993,7 +1001,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -1016,6 +1024,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 2
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1979406087423972932 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1781356600409242780, guid: ed985dfa75561d047a86b6648a3d11f8,
@@ -1067,9 +1077,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &8121467061719362912
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1107,7 +1117,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -1130,6 +1140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 0
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2960514245863055787 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3086436065929644917, guid: ed985dfa75561d047a86b6648a3d11f8,
@@ -1183,9 +1195,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &4356764194090360323
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1223,7 +1235,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -1246,6 +1258,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 3
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!95 &3266674801945159857 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: ed985dfa75561d047a86b6648a3d11f8,
@@ -1305,9 +1319,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &7974645020086821193
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1345,7 +1359,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -1368,6 +1382,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 1
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4782360943333154028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4728426434207774260, guid: ed985dfa75561d047a86b6648a3d11f8,
@@ -1419,9 +1435,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &3425165187517537480
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1459,7 +1475,7 @@ CharacterJoint:
     limit: 40
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -1482,6 +1498,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 0
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5400509850348142699 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3948933247560734027, guid: ed985dfa75561d047a86b6648a3d11f8,
@@ -1535,9 +1553,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &5490556077782492162
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1575,7 +1593,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -1598,6 +1616,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 2
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6224700353680578336 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6170625038081293824, guid: ed985dfa75561d047a86b6648a3d11f8,
@@ -1651,9 +1671,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &2715979701870169986
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1691,7 +1711,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -1714,6 +1734,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 1
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6321397162491617037 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3135921509060577837, guid: ed985dfa75561d047a86b6648a3d11f8,
@@ -1767,9 +1789,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &1558351162710527402
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1807,7 +1829,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -1830,6 +1852,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 3
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6453864443932555297 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2715566404302941441, guid: ed985dfa75561d047a86b6648a3d11f8,
@@ -1881,9 +1905,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &5563824782206337041
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -1921,7 +1945,7 @@ CharacterJoint:
     limit: 40
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -1944,6 +1968,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 0
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!4 &7316860720359041768 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: ed985dfa75561d047a86b6648a3d11f8,
@@ -2001,9 +2027,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &3206199812863505891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2018,6 +2044,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 0
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!4 &8914211049122886347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed985dfa75561d047a86b6648a3d11f8,
@@ -2077,9 +2105,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!144 &8001195874891829794
 CharacterJoint:
   m_ObjectHideFlags: 0
@@ -2117,7 +2145,7 @@ CharacterJoint:
     limit: 0
     bounciness: 0
     contactDistance: 0
-  m_EnableProjection: 0
+  m_EnableProjection: 1
   m_ProjectionDistance: 0.1
   m_ProjectionAngle: 180
   m_BreakForce: Infinity
@@ -2140,3 +2168,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _CollidingParts: []
   bodyPart: 0
+  _LastPosition: {x: 0, y: 0, z: 0}
+  _LastRotation: {x: 0, y: 0, z: 0, w: 0}
