@@ -55,6 +55,19 @@ namespace IndieGamePractice
         private AIProgress aIProgress;
         private DamageDetector damageDetector;
         private AIController aiController;
+        private BoxCollider boxCollider;
+
+        public BoxCollider _GetBoxCollider
+        {
+            get
+            {
+                if (null == boxCollider)
+                {
+                    boxCollider = GetComponent<BoxCollider>();
+                }
+                return boxCollider;
+            }
+        }
 
         public AIController _GetAiController
         {
@@ -156,6 +169,32 @@ namespace IndieGamePractice
             }
         }
 
+        private void updateSize()
+        {
+            if (!_GetAnimationProgress._UpdatingBoxCollider)
+            {
+                return;
+            }
+
+            if (Vector3.SqrMagnitude(_GetBoxCollider.size - _GetAnimationProgress._TargetSize) > 0.01f)
+            {
+                _GetBoxCollider.size = Vector3.Lerp(_GetBoxCollider.size, _GetAnimationProgress._TargetSize, Time.deltaTime * _GetAnimationProgress._SizeSpeed);
+            }
+        }
+
+        private void updateCenter()
+        {
+            if (!_GetAnimationProgress._UpdatingBoxCollider)
+            {
+                return;
+            }
+
+            if (Vector3.SqrMagnitude(_GetBoxCollider.center - _GetAnimationProgress._TargetCenter) > 0.01f)
+            {
+                _GetBoxCollider.center = Vector3.Lerp(_GetBoxCollider.center, _GetAnimationProgress._TargetCenter, Time.deltaTime * _GetAnimationProgress._CenterSpeed);
+            }
+        }
+
         private void FixedUpdate()
         {
             if (_GetRigidBody.velocity.y < 0f)
@@ -169,6 +208,15 @@ namespace IndieGamePractice
                 //_GetRigidBody.velocity -= Vector3.up * _PullMultiplier;
                 _GetRigidBody.velocity += Vector3.down * _PullMultiplier;
             }
+
+            if (_GetAnimationProgress._RagdollTriggered)
+            {
+                _TurnOnRagdoll();
+                _GetAnimationProgress._RagdollTriggered = false;
+            }
+
+            updateCenter();
+            updateSize();
         }
 
         public List<TriggerDetector> _GetAllTriggers()
@@ -194,14 +242,15 @@ namespace IndieGamePractice
             {
                 if (col.gameObject != gameObject)
                 {
-                    if (null == col.GetComponent<LedgeChecker>())
+                    if (null == col.gameObject.GetComponent<LedgeChecker>())
                     {
                         col.isTrigger = true;
                         _RagdollParts.Add(col);
-                        col.attachedRigidbody.interpolation = RigidbodyInterpolation.Interpolate;
-                        col.attachedRigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
 
-                        CharacterJoint joint = col.GetComponentInChildren<CharacterJoint>();
+                        col.attachedRigidbody.interpolation = RigidbodyInterpolation.None; /*interpolate*/
+                        col.attachedRigidbody.collisionDetectionMode = CollisionDetectionMode.Discrete/*continous dynamic*/;
+
+                        CharacterJoint joint = col.GetComponent<CharacterJoint>();
                         if (null != joint)
                         {
                             joint.enableProjection = false;
@@ -228,8 +277,8 @@ namespace IndieGamePractice
             foreach (Collider col in _RagdollParts)
             {
                 TriggerDetector trigger = col.GetComponent<TriggerDetector>();
-                trigger._LastPosition = col.transform.localPosition;
-                trigger._LastRotation = col.transform.localRotation;
+                trigger._LastPosition = col.gameObject.transform.localPosition;
+                trigger._LastRotation = col.gameObject.transform.localRotation;
             }
 
             _GetRigidBody.useGravity = false;
@@ -241,11 +290,12 @@ namespace IndieGamePractice
             foreach (Collider col in _RagdollParts)
             {
                 col.isTrigger = false;
-                col.attachedRigidbody.velocity = Vector3.zero;
 
                 TriggerDetector trigger = col.GetComponent<TriggerDetector>();
                 col.transform.localPosition = trigger._LastPosition;
                 col.transform.localRotation = trigger._LastRotation;
+
+                col.attachedRigidbody.velocity = Vector3.zero;
             }
         }
 

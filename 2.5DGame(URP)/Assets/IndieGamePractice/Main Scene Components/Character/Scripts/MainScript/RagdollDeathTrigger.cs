@@ -22,16 +22,17 @@ namespace IndieGamePractice
             {
                 if (!control._GetAnimationProgress._RagdollTriggered)
                 {
-                    control._TurnOnRagdoll();
-                    control._GetAnimationProgress._RagdollTriggered = true;
+                    if (control._SkinnedMesh.enabled)
+                    {
+                        control._GetAnimationProgress._RagdollTriggered = true;
+                    }
                 }
             }
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
-            control._GetAnimationProgress._RagdollTriggered = false;
+
         }
     }
 }

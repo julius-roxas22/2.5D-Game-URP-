@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2dd9a000cb5d1c47b791eed2acb7458, type: 3}
-  m_Name: FallingBack - Ragdoll
+  m_Script: {fileID: 11500000, guid: 65a157ec3fe59214e82eee541e08a2d7, type: 3}
+  m_Name: Player_JumpNormal_UpdateBoxCollider
   m_EditorClassIdentifier: 
-  ragdollTiming: 0.31
+  targetCenterSpeed: 10
+  targetCenter: {x: 0, y: 1.3, z: 0}
+  targetSizeSpeed: 10
+  targetSize: {x: 0.5, y: 1.2, z: 0.5}

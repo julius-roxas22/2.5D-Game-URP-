@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2dd9a000cb5d1c47b791eed2acb7458, type: 3}
   m_Name: Uppercut - Ragdoll
   m_EditorClassIdentifier: 
-  ragdollTiming: 0.45
+  ragdollTiming: 0.33
