@@ -10,6 +10,7 @@ namespace IndieGamePractice
         [SerializeField] private bool onEnable;
         [SerializeField] private bool onStart;
         [SerializeField] private bool onExit;
+        [Space(10)] [SerializeField] private bool onRepositionSpheres;
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
@@ -37,6 +38,11 @@ namespace IndieGamePractice
         private void toggleBoxCollider(CharacterControl control)
         {
             control.GetComponent<BoxCollider>().enabled = onEnable;
+            if (onRepositionSpheres)
+            {
+                control._RepositionFrontSpheres();
+                control._RepositionBottomSpheres();
+            }
         }
     }
 }

@@ -143,21 +143,7 @@ namespace IndieGamePractice
 
         private void Awake()
         {
-            bool switchBack = false;
-
-            if (!_IsFacingForward())
-            {
-                switchBack = true;
-            }
-
-            _FaceForward(true);
             createSphereEdge();
-
-            if (switchBack)
-            {
-                _FaceForward(false);
-            }
-
             registerCharacter();
         }
 
@@ -179,6 +165,7 @@ namespace IndieGamePractice
             if (Vector3.SqrMagnitude(_GetBoxCollider.size - _GetAnimationProgress._TargetSize) > 0.01f)
             {
                 _GetBoxCollider.size = Vector3.Lerp(_GetBoxCollider.size, _GetAnimationProgress._TargetSize, Time.deltaTime * _GetAnimationProgress._SizeSpeed);
+                _GetAnimationProgress._UpdatingSpheres = true;
             }
         }
 
@@ -192,6 +179,7 @@ namespace IndieGamePractice
             if (Vector3.SqrMagnitude(_GetBoxCollider.center - _GetAnimationProgress._TargetCenter) > 0.01f)
             {
                 _GetBoxCollider.center = Vector3.Lerp(_GetBoxCollider.center, _GetAnimationProgress._TargetCenter, Time.deltaTime * _GetAnimationProgress._CenterSpeed);
+                _GetAnimationProgress._UpdatingSpheres = true;
             }
         }
 
@@ -215,8 +203,16 @@ namespace IndieGamePractice
                 _GetAnimationProgress._RagdollTriggered = false;
             }
 
+            _GetAnimationProgress._UpdatingSpheres = false;
+
             updateCenter();
             updateSize();
+
+            if (_GetAnimationProgress._UpdatingSpheres)
+            {
+                _RepositionFrontSpheres();
+                _RepositionBottomSpheres();
+            }
         }
 
         public List<TriggerDetector> _GetAllTriggers()
@@ -301,44 +297,54 @@ namespace IndieGamePractice
 
         private void createSphereEdge()
         {
-            BoxCollider box = GetComponent<BoxCollider>();
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject obj = Instantiate(Resources.Load("ColliderEdge", typeof(GameObject)), Vector3.zero, Quaternion.identity, transform) as GameObject;
+                obj.transform.parent = transform;
+                _FrontSpheres.Add(obj);
+            }
+            _RepositionFrontSpheres();
 
-            float top = box.bounds.center.y + box.bounds.extents.y;
-            float bottom = box.bounds.center.y - box.bounds.extents.y;
-            float front = box.bounds.center.z + box.bounds.extents.z;
-            float back = box.bounds.center.z - box.bounds.extents.z;
-
-            GameObject bottomFrontHor = createColliderEdge(new Vector3(0f, bottom, front));
-            GameObject bottomFrontVer = createColliderEdge(new Vector3(0f, bottom + 0.05f, front));
-            GameObject bottomBack = createColliderEdge(new Vector3(0f, bottom, back));
-            GameObject topFront = createColliderEdge(new Vector3(0f, top, front));
-
-            _BottomSpheres.Add(bottomFrontHor);
-            _BottomSpheres.Add(bottomBack);
-            _FrontSpheres.Add(bottomFrontVer);
-            _FrontSpheres.Add(topFront);
-
-            float horSec = (bottomBack.transform.position - bottomFrontHor.transform.position).magnitude / 5f;
-            createSphereEdges(bottomBack.transform.position, Vector3.forward, horSec, 4, _BottomSpheres);
-
-            float verSec = (bottomFrontVer.transform.position - topFront.transform.position).magnitude / 9f;
-            createSphereEdges(bottomFrontVer.transform.position, Vector3.up, verSec, 8, _FrontSpheres);
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject obj = Instantiate(Resources.Load("ColliderEdge", typeof(GameObject)), Vector3.zero, Quaternion.identity, transform) as GameObject;
+                obj.transform.parent = transform;
+                _BottomSpheres.Add(obj);
+            }
+            _RepositionBottomSpheres();
         }
 
-        private void createSphereEdges(Vector3 startPos, Vector3 dir, float sec, float iteration, List<GameObject> spheres)
+        public void _RepositionFrontSpheres()
         {
-            for (int i = 0; i < iteration; i++)
+            float top = _GetBoxCollider.bounds.center.y + _GetBoxCollider.bounds.extents.y;
+            float bottom = _GetBoxCollider.bounds.center.y - _GetBoxCollider.bounds.extents.y;
+            float front = _GetBoxCollider.bounds.center.z + _GetBoxCollider.bounds.extents.z;
+
+            _FrontSpheres[0].transform.localPosition = new Vector3(0, bottom + 0.05f, front) - transform.position;
+            _FrontSpheres[1].transform.localPosition = new Vector3(0, top, front) - transform.position;
+            float interval = (top - bottom) / 9;
+
+            for (int i = 2; i < _FrontSpheres.Count; i++)
             {
-                Vector3 pos = startPos + dir * (sec * (i + 1));
-                GameObject obj = createColliderEdge(pos);
-                spheres.Add(obj);
+                _FrontSpheres[i].transform.localPosition = new Vector3(0, bottom + (interval * (i - 1)), front) - transform.position;
             }
         }
 
-        private GameObject createColliderEdge(Vector3 pos)
+        public void _RepositionBottomSpheres()
         {
-            GameObject obj = Instantiate(Resources.Load("ColliderEdge", typeof(GameObject)), pos, Quaternion.identity, transform) as GameObject;
-            return obj;
+            float bottom = _GetBoxCollider.bounds.center.y - _GetBoxCollider.bounds.extents.y;
+            float front = _GetBoxCollider.bounds.center.z + _GetBoxCollider.bounds.extents.z;
+            float back = _GetBoxCollider.bounds.center.z - _GetBoxCollider.bounds.extents.z;
+
+            _BottomSpheres[0].transform.localPosition = new Vector3(0, bottom, back) - transform.position;
+            _BottomSpheres[1].transform.localPosition = new Vector3(0, bottom, front) - transform.position;
+
+            float interval = (front - back) / 4;
+
+            for (int i = 2; i < _BottomSpheres.Count; i++)
+            {
+                _BottomSpheres[i].transform.localPosition = new Vector3(0, bottom, back + (interval * (i - 1))) - transform.position;
+            }
         }
 
         public void _CharacterMove(float movementSpeed, float speedGraph)

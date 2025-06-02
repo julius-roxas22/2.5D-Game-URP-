@@ -16,8 +16,9 @@ namespace IndieGamePractice
         [HideInInspector] public bool _AttackTriggered;
         [HideInInspector] public bool _DisAllowEarlyTurn;
         [HideInInspector] public bool _RagdollTriggered;
-        [HideInInspector] public float _AirMomentum;
+        [HideInInspector] public bool _UpdatingSpheres;
 
+        [HideInInspector] public float _AirMomentum;
         [HideInInspector] public bool _UpdatingBoxCollider;
         [HideInInspector] public float _SizeSpeed;
         [HideInInspector] public Vector3 _TargetSize;
