@@ -41,7 +41,16 @@ namespace IndieGamePractice
         {
             if (control._GetRigidBody.velocity.y >= -0.001f && control._GetRigidBody.velocity.y <= 0f)
             {
-                return true;
+                foreach (ContactPoint p in control._ContactPoints)
+                {
+                    float colliderBottom = (control.transform.position.y + control._GetBoxCollider.center.y) - (control._GetBoxCollider.size.y / 2f);
+                    float yDiff = Mathf.Abs(p.point.y - colliderBottom);
+
+                    if (yDiff < 0.01f)
+                    {
+                        return true;
+                    }
+                }
             }
 
             if (control._GetRigidBody.velocity.y < 0f)

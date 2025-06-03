@@ -34,6 +34,8 @@ namespace IndieGamePractice
         public GameObject _LeftHand;
         public GameObject _RightHand;
 
+        public ContactPoint[] _ContactPoints;
+
         private List<TriggerDetector> _AllTriggers = new List<TriggerDetector>();
         private Dictionary<string, GameObject> childObjDictionaries = new Dictionary<string, GameObject>();
 
@@ -49,7 +51,6 @@ namespace IndieGamePractice
         [HideInInspector] public float _PullMultiplier;
 
         private AnimationProgress animationProgress;
-
         private Rigidbody rigidBody;
         private LedgeChecker ledgeChecker;
         private AIProgress aIProgress;
@@ -215,6 +216,11 @@ namespace IndieGamePractice
             }
         }
 
+        private void OnCollisionStay(Collision collision)
+        {
+            _ContactPoints = collision.contacts;
+        }
+
         public List<TriggerDetector> _GetAllTriggers()
         {
             TriggerDetector[] triggers = GetComponentsInChildren<TriggerDetector>();
@@ -316,9 +322,9 @@ namespace IndieGamePractice
 
         public void _RepositionFrontSpheres()
         {
-            float top = _GetBoxCollider.bounds.center.y + _GetBoxCollider.bounds.extents.y;
-            float bottom = _GetBoxCollider.bounds.center.y - _GetBoxCollider.bounds.extents.y;
-            float front = _GetBoxCollider.bounds.center.z + _GetBoxCollider.bounds.extents.z;
+            float top = _GetBoxCollider.bounds.center.y + (_GetBoxCollider.bounds.size.y / 2f);
+            float bottom = _GetBoxCollider.bounds.center.y - (_GetBoxCollider.bounds.size.y / 2f);
+            float front = _GetBoxCollider.bounds.center.z + (_GetBoxCollider.bounds.size.z / 2f);
 
             _FrontSpheres[0].transform.localPosition = new Vector3(0, bottom + 0.05f, front) - transform.position;
             _FrontSpheres[1].transform.localPosition = new Vector3(0, top, front) - transform.position;
@@ -332,9 +338,9 @@ namespace IndieGamePractice
 
         public void _RepositionBottomSpheres()
         {
-            float bottom = _GetBoxCollider.bounds.center.y - _GetBoxCollider.bounds.extents.y;
-            float front = _GetBoxCollider.bounds.center.z + _GetBoxCollider.bounds.extents.z;
-            float back = _GetBoxCollider.bounds.center.z - _GetBoxCollider.bounds.extents.z;
+            float bottom = _GetBoxCollider.bounds.center.y - (_GetBoxCollider.bounds.size.y / 2f);
+            float front = _GetBoxCollider.bounds.center.z + (_GetBoxCollider.bounds.size.z / 2f);
+            float back = _GetBoxCollider.bounds.center.z - (_GetBoxCollider.bounds.size.z / 2f);
 
             _BottomSpheres[0].transform.localPosition = new Vector3(0, bottom, back) - transform.position;
             _BottomSpheres[1].transform.localPosition = new Vector3(0, bottom, front) - transform.position;
