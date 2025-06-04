@@ -34,11 +34,10 @@ namespace IndieGamePractice
         public GameObject _LeftHand;
         public GameObject _RightHand;
 
-        public ContactPoint[] _ContactPoints;
-
         private List<TriggerDetector> _AllTriggers = new List<TriggerDetector>();
         private Dictionary<string, GameObject> childObjDictionaries = new Dictionary<string, GameObject>();
 
+        [HideInInspector] public ContactPoint[] _ContactPoints;
         [HideInInspector] public bool _MoveUp;
         [HideInInspector] public bool _MoveDown;
         [HideInInspector] public bool _MoveRight;
