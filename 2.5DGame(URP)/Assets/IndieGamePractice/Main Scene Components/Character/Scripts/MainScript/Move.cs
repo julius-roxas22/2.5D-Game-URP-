@@ -85,6 +85,13 @@ namespace IndieGamePractice
 
         private void momentum(CharacterControl control, AnimatorStateInfo stateInfo)
         {
+            if (control._GetAnimationProgress._FrameUpdated)
+            {
+                return;
+            }
+
+            control._GetAnimationProgress._FrameUpdated = true;
+
             if (control._MoveRight)
             {
                 control._GetAnimationProgress._AirMomentum += speedGraph.Evaluate(stateInfo.normalizedTime) * movementSpeed * Time.deltaTime;

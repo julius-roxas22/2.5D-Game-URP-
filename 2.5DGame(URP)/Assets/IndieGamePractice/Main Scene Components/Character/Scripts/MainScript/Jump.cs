@@ -38,7 +38,6 @@ namespace IndieGamePractice
         {
             CharacterControl control = characterStateBase._GetCharacterControl(animator);
             control._PullMultiplier = 0f;
-            //control._GetAnimationProgress._IsJumped = false;
         }
     }
 }

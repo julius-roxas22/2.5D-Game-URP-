@@ -19,6 +19,8 @@ namespace IndieGamePractice
         [HideInInspector] public bool _UpdatingSpheres;
 
         [HideInInspector] public float _AirMomentum;
+        [HideInInspector] public bool _FrameUpdated;
+
         [HideInInspector] public bool _UpdatingBoxCollider;
         [HideInInspector] public float _SizeSpeed;
         [HideInInspector] public Vector3 _TargetSize;
@@ -54,6 +56,11 @@ namespace IndieGamePractice
             {
                 _AttackTriggered = true;
             }
+        }
+
+        private void LateUpdate()
+        {
+            _FrameUpdated = false;
         }
     }
 }

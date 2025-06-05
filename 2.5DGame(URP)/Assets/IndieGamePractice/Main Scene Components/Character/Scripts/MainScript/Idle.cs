@@ -36,7 +36,7 @@ namespace IndieGamePractice
             {
                 if (!control._GetAnimationProgress._IsJumped)
                 {
-                animator.SetBool(_TransitionParameters.Jump.ToString(), true);
+                    animator.SetBool(_TransitionParameters.Jump.ToString(), true);
                 }
             }
             else
