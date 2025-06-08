@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65a157ec3fe59214e82eee541e08a2d7, type: 3}
-  m_Name: Player_Smash_Landing_UpdateBoxCollider
+  m_Name: Player_Smash_End_UpdateBoxCollider
   m_EditorClassIdentifier: 
   targetCenterSpeed: 10
-  targetCenter: {x: 0, y: 0.5, z: 0}
+  targetCenter: {x: 0, y: 0.51, z: 0}
   targetSizeSpeed: 10
-  targetSize: {x: 0.5, y: 1.07, z: 0.5}
+  targetSize: {x: 0.5, y: 1.04, z: 0.5}
   keepUpdating: 1
