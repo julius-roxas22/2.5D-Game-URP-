@@ -13,6 +13,9 @@ namespace IndieGamePractice
         [SerializeField] private float targetSizeSpeed;
         [SerializeField] private Vector3 targetSize;
 
+        [Space(10)]
+        [SerializeField] private bool keepUpdating;
+
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = characterStateBase._GetCharacterControl(animator);
@@ -33,7 +36,10 @@ namespace IndieGamePractice
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = characterStateBase._GetCharacterControl(animator);
-            control._GetAnimationProgress._UpdatingBoxCollider = false;
+            if (!keepUpdating)
+            {
+                control._GetAnimationProgress._UpdatingBoxCollider = false;
+            }
         }
     }
 }

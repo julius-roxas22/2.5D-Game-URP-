@@ -16,3 +16,4 @@ MonoBehaviour:
   targetCenter: {x: 0, y: 0, z: 0}
   targetSizeSpeed: 10
   targetSize: {x: 0.5, y: 1.16, z: 0.5}
+  keepUpdating: 1
