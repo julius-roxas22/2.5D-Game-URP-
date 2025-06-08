@@ -13,9 +13,11 @@ namespace IndieGamePractice
         private List<Coroutine> moveCoroutines = new List<Coroutine>();
 
         [HideInInspector] public bool _StartWalk;
+        [HideInInspector] public CharacterControl _Owner;
 
         public GameObject _StartSphere;
         public GameObject _EndSphere;
+
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
@@ -57,6 +59,8 @@ namespace IndieGamePractice
             {
                 if (agent.isOnOffMeshLink)
                 {
+                    _Owner._GetNavMeshObstacle.carving = true;
+
                     _StartSphere.transform.position = agent.currentOffMeshLinkData.startPos;
                     _EndSphere.transform.position = agent.currentOffMeshLinkData.endPos;
                     agent.CompleteOffMeshLink();
@@ -69,6 +73,11 @@ namespace IndieGamePractice
 
                 if (dist < 0.5f)
                 {
+                    if (Vector3.SqrMagnitude(_Owner.transform.position - agent.destination) > 1f)
+                    {
+                        _Owner._GetNavMeshObstacle.carving = true;
+                    }
+
                     _StartSphere.transform.position = agent.destination;
                     _EndSphere.transform.position = agent.destination;
                     agent.isStopped = true;

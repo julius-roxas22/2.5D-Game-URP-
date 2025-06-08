@@ -39,7 +39,7 @@ namespace IndieGamePractice
 
         private bool isGrounded(CharacterControl control)
         {
-            if (control._GetRigidBody.velocity.y >= -0.001f && control._GetRigidBody.velocity.y <= 0f)
+            if (null != control._ContactPoints)
             {
                 foreach (ContactPoint p in control._ContactPoints)
                 {
@@ -48,7 +48,10 @@ namespace IndieGamePractice
 
                     if (yDiff < 0.01f)
                     {
-                        return true;
+                        if (Mathf.Abs(control._GetRigidBody.velocity.y) < 0.001f)
+                        {
+                            return true;
+                        }
                     }
                 }
             }

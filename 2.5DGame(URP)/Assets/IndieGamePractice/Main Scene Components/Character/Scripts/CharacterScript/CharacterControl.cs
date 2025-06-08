@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace IndieGamePractice
 {
@@ -37,15 +38,16 @@ namespace IndieGamePractice
         private List<TriggerDetector> _AllTriggers = new List<TriggerDetector>();
         private Dictionary<string, GameObject> childObjDictionaries = new Dictionary<string, GameObject>();
 
-        [HideInInspector] public ContactPoint[] _ContactPoints;
-        [HideInInspector] public bool _MoveUp;
-        [HideInInspector] public bool _MoveDown;
-        [HideInInspector] public bool _MoveRight;
-        [HideInInspector] public bool _MoveLeft;
-        [HideInInspector] public bool _Jump;
-        [HideInInspector] public bool _Attack;
-        [HideInInspector] public bool _Turbo;
+        [Header("Controller")]
+        public bool _MoveUp;
+        public bool _MoveDown;
+        public bool _MoveRight;
+        public bool _MoveLeft;
+        public bool _Jump;
+        public bool _Attack;
+        public bool _Turbo;
 
+        [HideInInspector] public ContactPoint[] _ContactPoints;
         [HideInInspector] public float _GravityMultiplier;
         [HideInInspector] public float _PullMultiplier;
 
@@ -56,6 +58,19 @@ namespace IndieGamePractice
         private DamageDetector damageDetector;
         private AIController aiController;
         private BoxCollider boxCollider;
+        private NavMeshObstacle navObstacle;
+
+        public NavMeshObstacle _GetNavMeshObstacle
+        {
+            get
+            {
+                if (null == navObstacle)
+                {
+                    navObstacle = GetComponent<NavMeshObstacle>();
+                }
+                return navObstacle;
+            }
+        }
 
         public BoxCollider _GetBoxCollider
         {
@@ -284,7 +299,7 @@ namespace IndieGamePractice
 
             _GetRigidBody.useGravity = false;
             _GetRigidBody.velocity = Vector3.zero;
-            GetComponent<BoxCollider>().enabled = false;
+            _GetBoxCollider.enabled = false;
             _SkinnedMesh.enabled = false;
             _SkinnedMesh.avatar = null;
 

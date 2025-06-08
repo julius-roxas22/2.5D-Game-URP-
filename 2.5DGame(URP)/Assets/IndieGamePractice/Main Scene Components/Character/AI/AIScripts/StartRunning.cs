@@ -25,7 +25,11 @@ namespace IndieGamePractice
                 control._MoveLeft = true;
             }
 
-            control._Turbo = true;
+            float dist = (control._GetAiProgress.agent._StartSphere.transform.position - control.transform.position).sqrMagnitude;
+            if (dist > 2f)
+            {
+                control._Turbo = true;
+            }
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)

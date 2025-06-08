@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 namespace IndieGamePractice
 {
-
     public enum AITransitions
     {
         start_walk,
@@ -28,8 +27,10 @@ namespace IndieGamePractice
                 control._GetAiProgress.agent = obj.GetComponent<PathFindingAgent>();
             }
 
+            control._GetAiProgress.agent._Owner = control;
             control._GetAiProgress.agent.GetComponent<NavMeshAgent>().enabled = false;
             control._GetAiProgress.agent.transform.position = control.transform.position;
+            control._GetNavMeshObstacle.carving = false;
             control._GetAiProgress.agent._GotoTarget();
         }
 
