@@ -12,6 +12,7 @@ namespace IndieGamePractice
         [SerializeField] private AnimationCurve speedGraph;
         [SerializeField] private bool constantMoved;
         [SerializeField] private bool lockDirection;
+        [SerializeField] private bool lockDirectionNextState;
         [SerializeField] private bool allowEarlyTurn;
 
         [Header("Momentum")]
@@ -26,14 +27,21 @@ namespace IndieGamePractice
 
             if (allowEarlyTurn && !control._GetAnimationProgress._DisAllowEarlyTurn)
             {
-                if (control._MoveLeft)
+                if (!control._GetAnimationProgress._LockDirectionNextState)
                 {
-                    control._FaceForward(false);
-                }
+                    if (control._MoveLeft)
+                    {
+                        control._FaceForward(false);
+                    }
 
-                if (control._MoveRight)
+                    if (control._MoveRight)
+                    {
+                        control._FaceForward(true);
+                    }
+                }
+                else
                 {
-                    control._FaceForward(true);
+                    control._GetAnimationProgress._LockDirectionNextState = false;
                 }
             }
 
@@ -56,6 +64,15 @@ namespace IndieGamePractice
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = characterStateBase._GetCharacterControl(animator);
+
+            control._GetAnimationProgress._LockDirectionNextState = lockDirectionNextState;
+
+            if (control._GetAnimationProgress._FrameUpdated)
+            {
+                return;
+            }
+
+            control._GetAnimationProgress._FrameUpdated = true;
 
             if (useMomentum)
             {
@@ -85,13 +102,6 @@ namespace IndieGamePractice
 
         private void momentum(CharacterControl control, AnimatorStateInfo stateInfo)
         {
-            if (control._GetAnimationProgress._FrameUpdated)
-            {
-                return;
-            }
-
-            control._GetAnimationProgress._FrameUpdated = true;
-
             if (control._MoveRight)
             {
                 control._GetAnimationProgress._AirMomentum += speedGraph.Evaluate(stateInfo.normalizedTime) * movementSpeed * Time.deltaTime;

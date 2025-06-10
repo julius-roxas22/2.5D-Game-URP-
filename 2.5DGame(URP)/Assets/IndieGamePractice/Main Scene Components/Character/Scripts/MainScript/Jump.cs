@@ -11,16 +11,20 @@ namespace IndieGamePractice
         [SerializeField] private float jumpTiming;
         [SerializeField] private float jumpForce;
         [SerializeField] private AnimationCurve pull;
+        [SerializeField] private bool cancelPullGravity;
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            control._GetAnimationProgress._IsJumped = false;
             if (jumpTiming == 0)
             {
                 control._GetRigidBody.AddForce(Vector3.up * jumpForce);
                 control._GetAnimationProgress._IsJumped = true;
             }
             animator.SetBool(_TransitionParameters.Grounded.ToString(), false);
+
+            control._GetAnimationProgress._CancelPullGravity = cancelPullGravity;
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)

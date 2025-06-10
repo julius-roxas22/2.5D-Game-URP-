@@ -26,6 +26,8 @@ namespace IndieGamePractice
         [HideInInspector] public Vector3 _TargetSize;
         [HideInInspector] public float _CenterSpeed;
         [HideInInspector] public Vector3 _TargetCenter;
+        [HideInInspector] public bool _CancelPullGravity;
+        [HideInInspector] public bool _LockDirectionNextState;
 
         private void Awake()
         {

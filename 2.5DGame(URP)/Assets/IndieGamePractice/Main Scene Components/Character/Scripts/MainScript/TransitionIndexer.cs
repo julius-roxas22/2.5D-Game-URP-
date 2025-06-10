@@ -12,7 +12,8 @@ namespace IndieGamePractice
         RIGHT,
         ATTACK,
         JUMP,
-        GRABBING_LEDGE
+        GRABBING_LEDGE,
+        LEFT_OR_RIGHT
     }
 
     [CreateAssetMenu(fileName = "New Ability Data", menuName = "IndieGamePractice/Create/Ability/TransitionIndexer")]
@@ -110,6 +111,14 @@ namespace IndieGamePractice
                     case _TransitionConditionType.GRABBING_LEDGE:
                         {
                             if (!control._GetLedgeChecker._IsGrabbingLedge)
+                            {
+                                return false;
+                            }
+                            break;
+                        }
+                    case _TransitionConditionType.LEFT_OR_RIGHT:
+                        {
+                            if (!control._MoveLeft && !control._MoveRight)
                             {
                                 return false;
                             }

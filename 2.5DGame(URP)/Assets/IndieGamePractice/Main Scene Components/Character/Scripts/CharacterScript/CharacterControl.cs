@@ -200,16 +200,19 @@ namespace IndieGamePractice
 
         private void FixedUpdate()
         {
-            if (_GetRigidBody.velocity.y < 0f)
+            if (!_GetAnimationProgress._CancelPullGravity)
             {
-                //_GetRigidBody.velocity -= Vector3.up * _GravityMultiplier;
-                _GetRigidBody.velocity += Vector3.down * _GravityMultiplier;
-            }
+                if (_GetRigidBody.velocity.y < 0f)
+                {
+                    //_GetRigidBody.velocity -= Vector3.up * _GravityMultiplier;
+                    _GetRigidBody.velocity += Vector3.down * _GravityMultiplier;
+                }
 
-            if (_GetRigidBody.velocity.y > 0f && !_Jump)
-            {
-                //_GetRigidBody.velocity -= Vector3.up * _PullMultiplier;
-                _GetRigidBody.velocity += Vector3.down * _PullMultiplier;
+                if (_GetRigidBody.velocity.y > 0f && !_Jump)
+                {
+                    //_GetRigidBody.velocity -= Vector3.up * _PullMultiplier;
+                    _GetRigidBody.velocity += Vector3.down * _PullMultiplier;
+                }
             }
 
             if (_GetAnimationProgress._RagdollTriggered)

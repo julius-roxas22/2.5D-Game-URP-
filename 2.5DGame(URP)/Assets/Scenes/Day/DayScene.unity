@@ -609,6 +609,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ybot - Yellow Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1724449826587016849, guid: 8a1d96d0bab6dd54cbc405e3633b7c7f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2042078365779234863, guid: 8a1d96d0bab6dd54cbc405e3633b7c7f,
         type: 3}
       propertyPath: _InitialAIType
@@ -1503,6 +1508,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ybot - Yellow Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724449826587016849, guid: 8a1d96d0bab6dd54cbc405e3633b7c7f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2042078365779234863, guid: 8a1d96d0bab6dd54cbc405e3633b7c7f,
         type: 3}
