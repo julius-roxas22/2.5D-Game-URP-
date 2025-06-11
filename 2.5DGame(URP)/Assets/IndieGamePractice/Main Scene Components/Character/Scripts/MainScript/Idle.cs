@@ -12,6 +12,7 @@ namespace IndieGamePractice
             animator.SetBool(_TransitionParameters.Jump.ToString(), false);
             animator.SetBool(_TransitionParameters.Attack.ToString(), false);
             animator.SetBool(_TransitionParameters.Move.ToString(), false);
+            animator.SetBool(_TransitionParameters.Grounded.ToString(), true);
 
             CharacterControl control = characterStateBase._GetCharacterControl(animator);
             control._GetAnimationProgress._DisAllowEarlyTurn = false;
@@ -58,6 +59,7 @@ namespace IndieGamePractice
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             animator.SetBool(_TransitionParameters.Attack.ToString(), false);
+            animator.SetBool(_TransitionParameters.Grounded.ToString(), true);
         }
     }
 }

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee15566ebc431a742bd538c6a228b0d3, type: 3}
   m_Name: Player_FlyingKick_GroundDetector
   m_EditorClassIdentifier: 
-  distance: 0.03
+  distance: 0.01
   checkTime: 0.9
