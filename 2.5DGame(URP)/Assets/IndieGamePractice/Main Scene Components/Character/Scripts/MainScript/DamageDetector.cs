@@ -104,6 +104,22 @@ namespace IndieGamePractice
                                 return true;
                             }
                         }
+                        else if (attackPart == _AttackPartType.LeftFoot)
+                        {
+                            if (info._Attacker._LeftFoot == col.gameObject)
+                            {
+                                damagedBodyPart = trigger.bodyPart;
+                                return true;
+                            }
+                        }
+                        else if (attackPart == _AttackPartType.RightFoot)
+                        {
+                            if (info._Attacker._RightFoot == col.gameObject)
+                            {
+                                damagedBodyPart = trigger.bodyPart;
+                                return true;
+                            }
+                        }
                     }
                 }
             }

@@ -3533,6 +3533,8 @@ MonoBehaviour:
   - {fileID: 4565595787135077954}
   _LeftHand: {fileID: 2244648887600219265}
   _RightHand: {fileID: 931696831298244499}
+  _LeftFoot: {fileID: 7645171951076806511}
+  _RightFoot: {fileID: 8636355737168547856}
   _MoveUp: 0
   _MoveDown: 0
   _MoveRight: 0

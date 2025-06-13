@@ -7,7 +7,9 @@ namespace IndieGamePractice
     public enum _AttackPartType
     {
         LeftHand,
-        RightHand
+        RightHand,
+        LeftFoot,
+        RightFoot
     }
 
     [CreateAssetMenu(fileName = "New Ability Data", menuName = "IndieGamePractice/Create/Ability/Attack")]
