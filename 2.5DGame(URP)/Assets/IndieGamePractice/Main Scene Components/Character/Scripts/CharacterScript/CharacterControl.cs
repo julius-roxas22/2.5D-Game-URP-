@@ -430,6 +430,11 @@ namespace IndieGamePractice
                 return;
             }
 
+            if (!_SkinnedMesh.enabled)
+            {
+                return;
+            }
+
             if (isFacingForward)
             {
                 transform.rotation = Quaternion.Euler(0f, 0f, 0f);
