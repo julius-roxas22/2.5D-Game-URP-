@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace IndieGamePractice
 {
-    public class KeyboardInput : MonoBehaviour
+    public class PlayerInput : MonoBehaviour
     {
+        public SavedKeys _SavedKeys;
+
         void Update()
         {
             VirtualInputManager._GetInstance._MoveUp = Input.GetKey(VirtualInputManager._GetInstance._DictionaryKeys[InputKeyType.UP]) ? true : false;

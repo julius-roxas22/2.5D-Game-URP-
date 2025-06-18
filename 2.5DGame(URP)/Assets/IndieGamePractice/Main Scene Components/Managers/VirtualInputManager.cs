@@ -38,6 +38,8 @@ namespace IndieGamePractice
         public bool _Bind_Jump;
         public bool _Bind_Turbo;
 
+        private PlayerInput playerInput;
+
         [Space(10)]
         public Dictionary<InputKeyType, KeyCode> _DictionaryKeys = new Dictionary<InputKeyType, KeyCode>();
         [SerializeField] private KeyCode[] possibleKeys;
@@ -45,19 +47,11 @@ namespace IndieGamePractice
         private void Awake()
         {
             possibleKeys = System.Enum.GetValues(typeof(KeyCode)) as KeyCode[];
-        }
-
-        public void _SetDefaultKeys()
-        {
-            _DictionaryKeys.Clear();
-
-            _DictionaryKeys.Add(InputKeyType.UP, KeyCode.W);
-            _DictionaryKeys.Add(InputKeyType.DOWN, KeyCode.S);
-            _DictionaryKeys.Add(InputKeyType.LEFT, KeyCode.A);
-            _DictionaryKeys.Add(InputKeyType.RIGHT, KeyCode.D);
-            _DictionaryKeys.Add(InputKeyType.ATTACK, KeyCode.Return);
-            _DictionaryKeys.Add(InputKeyType.JUMP, KeyCode.Space);
-            _DictionaryKeys.Add(InputKeyType.TURBO, KeyCode.LeftShift);
+            if (null == playerInput)
+            {
+                GameObject obj = Instantiate(Resources.Load("PlayerInput", typeof(GameObject))) as GameObject;
+                playerInput = obj.GetComponent<PlayerInput>();
+            }
         }
 
         private void Update()
@@ -127,6 +121,57 @@ namespace IndieGamePractice
             }
         }
 
+        public void _LoadKeys()
+        {
+            if (playerInput._SavedKeys._KeyCodeList.Count > 0)
+            {
+                foreach (KeyCode k in playerInput._SavedKeys._KeyCodeList)
+                {
+                    if (k == KeyCode.None)
+                    {
+                        _SetDefaultKeys();
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                _SetDefaultKeys();
+            }
+
+            for (int i = 0; i < playerInput._SavedKeys._KeyCodeList.Count; i++)
+            {
+                _DictionaryKeys[(InputKeyType)i] = playerInput._SavedKeys._KeyCodeList[i];
+            }
+        }
+
+        private void savedKeys()
+        {
+            playerInput._SavedKeys._KeyCodeList.Clear();
+
+            int count = System.Enum.GetValues(typeof(InputKeyType)).Length;
+
+            for (int i = 0; i < count; i++)
+            {
+                playerInput._SavedKeys._KeyCodeList.Add(_DictionaryKeys[(InputKeyType)i]);
+            }
+        }
+
+        public void _SetDefaultKeys()
+        {
+            _DictionaryKeys.Clear();
+
+            _DictionaryKeys.Add(InputKeyType.UP, KeyCode.W);
+            _DictionaryKeys.Add(InputKeyType.DOWN, KeyCode.S);
+            _DictionaryKeys.Add(InputKeyType.LEFT, KeyCode.A);
+            _DictionaryKeys.Add(InputKeyType.RIGHT, KeyCode.D);
+            _DictionaryKeys.Add(InputKeyType.ATTACK, KeyCode.Return);
+            _DictionaryKeys.Add(InputKeyType.JUMP, KeyCode.Space);
+            _DictionaryKeys.Add(InputKeyType.TURBO, KeyCode.LeftShift);
+
+            savedKeys();
+        }
+
         private void setCustomKey(InputKeyType keyType, KeyCode keyCode)
         {
             Debug.Log("key changed: " + keyType.ToString() + " - > " + keyCode.ToString());
@@ -139,6 +184,8 @@ namespace IndieGamePractice
             {
                 _DictionaryKeys[keyType] = keyCode;
             }
+
+            savedKeys();
         }
 
         private bool keyIsChanged(InputKeyType keyType)
