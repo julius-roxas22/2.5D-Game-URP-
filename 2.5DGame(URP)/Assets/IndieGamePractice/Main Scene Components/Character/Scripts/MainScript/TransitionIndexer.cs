@@ -25,7 +25,7 @@ namespace IndieGamePractice
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             if (makeTransition(control))
             {
                 animator.SetInteger(_TransitionParameters.TransitionIndex.ToString(), index);
@@ -38,7 +38,7 @@ namespace IndieGamePractice
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             if (makeTransition(control))
             {
                 animator.SetInteger(_TransitionParameters.TransitionIndex.ToString(), index);

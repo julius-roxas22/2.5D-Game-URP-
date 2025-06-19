@@ -15,7 +15,7 @@ namespace IndieGamePractice
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             control._GetAnimationProgress._IsJumped = false;
             if (jumpTiming == 0)
             {
@@ -29,7 +29,7 @@ namespace IndieGamePractice
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             if (!control._GetAnimationProgress._IsJumped && animatorStateInfo.normalizedTime >= jumpTiming)
             {
                 control._GetRigidBody.AddForce(Vector3.up * jumpForce);
@@ -40,7 +40,7 @@ namespace IndieGamePractice
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             control._PullMultiplier = 0f;
         }
     }

@@ -10,7 +10,7 @@ namespace IndieGamePractice
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             control._GetAnimationProgress._DisAllowEarlyTurn = true;
         }
 

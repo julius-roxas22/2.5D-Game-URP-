@@ -15,13 +15,13 @@ namespace IndieGamePractice
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             control._GravityMultiplier = gravirtPull.Evaluate(animatorStateInfo.normalizedTime);
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             control._GravityMultiplier = 0f;
         }
     }

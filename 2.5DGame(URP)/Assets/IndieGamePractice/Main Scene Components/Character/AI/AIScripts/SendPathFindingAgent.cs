@@ -18,8 +18,7 @@ namespace IndieGamePractice
     {
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
-            //AIProgress ai = control._GetAiProgress;
+            CharacterControl control = characterStateBase._CharacterControl;
 
             if (null == control._GetAiProgress.agent)
             {
@@ -36,7 +35,7 @@ namespace IndieGamePractice
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             if (control._GetAiProgress.agent._StartWalk)
             {
                 animator.SetBool(AITransitions.start_walk.ToString(), true);

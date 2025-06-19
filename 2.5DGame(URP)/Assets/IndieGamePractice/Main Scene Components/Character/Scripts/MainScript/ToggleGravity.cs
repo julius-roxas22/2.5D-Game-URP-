@@ -14,7 +14,7 @@ namespace IndieGamePractice
         {
             if (onStart)
             {
-                CharacterControl control = characterStateBase._GetCharacterControl(animator);
+                CharacterControl control = characterStateBase._CharacterControl;
                 toggleGravity(control);
             }
         }
@@ -28,7 +28,7 @@ namespace IndieGamePractice
         {
             if (onExit)
             {
-                CharacterControl control = characterStateBase._GetCharacterControl(animator);
+                CharacterControl control = characterStateBase._CharacterControl;
                 toggleGravity(control);
             }
         }

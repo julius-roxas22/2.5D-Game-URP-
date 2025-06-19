@@ -14,7 +14,7 @@ namespace IndieGamePractice
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             if ((control._MoveLeft || control._MoveRight) && control._Turbo)
             {
                 animator.SetBool(_TransitionParameters.Move.ToString(), true);
@@ -25,7 +25,7 @@ namespace IndieGamePractice
                 animator.SetBool(_TransitionParameters.Move.ToString(), false);
                 animator.SetBool(_TransitionParameters.Turbo.ToString(), false);
             }
-            
+
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)

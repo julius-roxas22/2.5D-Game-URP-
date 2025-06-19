@@ -35,7 +35,7 @@ namespace IndieGamePractice
             AttackInfo info = obj.GetComponent<AttackInfo>();
 
             obj.SetActive(true);
-            info._ResetAttackInfo(this, characterStateBase._GetCharacterControl(animator));
+            info._ResetAttackInfo(this, characterStateBase._CharacterControl);
 
             if (!AttackManager._GetInstance._CurrentAttacks.Contains(info))
             {
@@ -45,9 +45,10 @@ namespace IndieGamePractice
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            registerAttack(characterStateBase._GetCharacterControl(animator), animatorStateInfo);
+            CharacterControl control = characterStateBase._CharacterControl;
+            registerAttack(control, animatorStateInfo);
             deRegisterAttack(animatorStateInfo);
-            checkCombo(characterStateBase._GetCharacterControl(animator), animator, animatorStateInfo);
+            checkCombo(control, animator, animatorStateInfo);
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)

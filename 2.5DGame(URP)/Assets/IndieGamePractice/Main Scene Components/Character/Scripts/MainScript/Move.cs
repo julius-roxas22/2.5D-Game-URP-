@@ -23,7 +23,7 @@ namespace IndieGamePractice
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
 
             if (allowEarlyTurn && !control._GetAnimationProgress._DisAllowEarlyTurn)
             {
@@ -63,7 +63,7 @@ namespace IndieGamePractice
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
 
             control._GetAnimationProgress._LockDirectionNextState = lockDirectionNextState;
 
@@ -93,7 +93,7 @@ namespace IndieGamePractice
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             if (clearMomentum)
             {
                 control._GetAnimationProgress._AirMomentum = 0f;

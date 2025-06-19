@@ -9,7 +9,7 @@ namespace IndieGamePractice
     {
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             GameObject anim = control._SkinnedMesh.gameObject;
             anim.transform.parent = control._GetLedgeChecker._Ledge.transform;
             anim.transform.localPosition = control._GetLedgeChecker._Ledge._Offset;

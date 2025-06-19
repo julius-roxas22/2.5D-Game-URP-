@@ -54,115 +54,36 @@ namespace IndieGamePractice
         [HideInInspector] public float _GravityMultiplier;
         [HideInInspector] public float _PullMultiplier;
 
-        private AnimationProgress animationProgress;
-        private Rigidbody rigidBody;
-        private LedgeChecker ledgeChecker;
-        private AIProgress aIProgress;
-        private DamageDetector damageDetector;
-        private AIController aiController;
-        private BoxCollider boxCollider;
-        private NavMeshObstacle navObstacle;
-
-        public NavMeshObstacle _GetNavMeshObstacle
-        {
-            get
-            {
-                if (null == navObstacle)
-                {
-                    navObstacle = GetComponent<NavMeshObstacle>();
-                }
-                return navObstacle;
-            }
-        }
-
-        public BoxCollider _GetBoxCollider
-        {
-            get
-            {
-                if (null == boxCollider)
-                {
-                    boxCollider = GetComponent<BoxCollider>();
-                }
-                return boxCollider;
-            }
-        }
-
-        public AIController _GetAiController
-        {
-            get
-            {
-                if (null == aiController)
-                {
-                    aiController = GetComponentInChildren<AIController>();
-                }
-                return aiController;
-            }
-        }
-
-        public DamageDetector _GetDamageDetector
-        {
-            get
-            {
-                if (null == damageDetector)
-                {
-                    damageDetector = GetComponent<DamageDetector>();
-                }
-                return damageDetector;
-            }
-        }
-
-        public AIProgress _GetAiProgress
-        {
-            get
-            {
-                if (null == aIProgress)
-                {
-                    aIProgress = GetComponentInChildren<AIProgress>();
-                }
-                return aIProgress;
-            }
-        }
-
-        public AnimationProgress _GetAnimationProgress
-        {
-            get
-            {
-                if (null == animationProgress)
-                {
-                    animationProgress = GetComponent<AnimationProgress>();
-                }
-                return animationProgress;
-            }
-        }
-
-        public LedgeChecker _GetLedgeChecker
-        {
-            get
-            {
-                if (null == ledgeChecker)
-                {
-                    ledgeChecker = GetComponentInChildren<LedgeChecker>();
-                }
-                return ledgeChecker;
-            }
-        }
-
-        public Rigidbody _GetRigidBody
-        {
-            get
-            {
-                if (null == rigidBody)
-                {
-                    rigidBody = GetComponent<Rigidbody>();
-                }
-                return rigidBody;
-            }
-        }
+        public AnimationProgress _GetAnimationProgress;
+        public Rigidbody _GetRigidBody;
+        public LedgeChecker _GetLedgeChecker;
+        public AIProgress _GetAiProgress;
+        public DamageDetector _GetDamageDetector;
+        public AIController _GetAiController;
+        public BoxCollider _GetBoxCollider;
+        public NavMeshObstacle _GetNavMeshObstacle;
 
         private void Awake()
         {
+            _GetRigidBody = GetComponent<Rigidbody>();
+            _GetLedgeChecker = GetComponentInChildren<LedgeChecker>();
+            _GetAnimationProgress = GetComponent<AnimationProgress>();
+            _GetAiProgress = GetComponentInChildren<AIProgress>();
+            _GetDamageDetector = GetComponent<DamageDetector>();
+            _GetAiController = GetComponentInChildren<AIController>();
+            _GetBoxCollider = GetComponent<BoxCollider>();
+            _GetNavMeshObstacle = GetComponent<NavMeshObstacle>();
             createSphereEdge();
             registerCharacter();
+        }
+
+        public void _CacheCharacterControl(Animator anim)
+        {
+            CharacterStateBase[] stateBase = anim.GetBehaviours<CharacterStateBase>();
+            foreach (CharacterStateBase data in stateBase)
+            {
+                data._CharacterControl = this;
+            }
         }
 
         private void registerCharacter()

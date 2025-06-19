@@ -14,7 +14,7 @@ namespace IndieGamePractice
         {
             if (onStart)
             {
-                CharacterControl control = characterStateBase._GetCharacterControl(animator);
+                CharacterControl control = characterStateBase._CharacterControl;
                 control._SkinnedMesh.transform.localPosition = Vector3.zero;
                 control._SkinnedMesh.transform.localRotation = Quaternion.identity;
             }
@@ -29,7 +29,7 @@ namespace IndieGamePractice
         {
             if (onExit)
             {
-                CharacterControl control = characterStateBase._GetCharacterControl(animator);
+                CharacterControl control = characterStateBase._CharacterControl;
                 control._SkinnedMesh.transform.localPosition = Vector3.zero;
                 control._SkinnedMesh.transform.localRotation = Quaternion.identity;
             }

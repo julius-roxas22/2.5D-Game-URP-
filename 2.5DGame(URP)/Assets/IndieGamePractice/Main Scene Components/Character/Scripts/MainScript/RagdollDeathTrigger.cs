@@ -17,7 +17,7 @@ namespace IndieGamePractice
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             if (animatorStateInfo.normalizedTime >= ragdollTiming)
             {
                 if (!control._GetAnimationProgress._RagdollTriggered)

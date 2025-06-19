@@ -17,14 +17,14 @@ namespace IndieGamePractice
         {
             if (spawnTiming == 0)
             {
-                CharacterControl control = characterStateBase._GetCharacterControl(animator);
+                CharacterControl control = characterStateBase._CharacterControl;
                 spawnObj(control);
             }
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             if (!control._GetAnimationProgress._PoolObjectTypeList.Contains(objType))
             {
                 if (animatorStateInfo.normalizedTime >= spawnTiming)
@@ -36,7 +36,7 @@ namespace IndieGamePractice
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             if (control._GetAnimationProgress._PoolObjectTypeList.Contains(objType))
             {
                 control._GetAnimationProgress._PoolObjectTypeList.Remove(objType);

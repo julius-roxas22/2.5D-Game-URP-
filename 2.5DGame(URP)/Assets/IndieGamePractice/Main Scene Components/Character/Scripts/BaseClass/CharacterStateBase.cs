@@ -7,11 +7,17 @@ namespace IndieGamePractice
 {
     public class CharacterStateBase : StateMachineBehaviour
     {
-        private CharacterControl characterControl;
+        public CharacterControl _CharacterControl;
         [SerializeField] private List<StateData> allAbilitiesData = new List<StateData>();
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (null == _CharacterControl)
+            {
+                CharacterControl control = animator.transform.root.GetComponent<CharacterControl>();
+                control._CacheCharacterControl(animator);
+            }
+
             foreach (StateData d in allAbilitiesData)
             {
                 d._OnEnterAbility(this, animator, stateInfo);
@@ -34,14 +40,14 @@ namespace IndieGamePractice
             }
         }
 
-        public CharacterControl _GetCharacterControl(Animator animator)
-        {
-            if (null == characterControl)
-            {
-                characterControl = animator.transform.root.GetComponent<CharacterControl>();
-            }
-            return characterControl;
-        }
+        //public CharacterControl _GetCharacterControl(Animator animator)
+        //{
+        //    if (null == characterControl)
+        //    {
+        //        characterControl = animator.transform.root.GetComponent<CharacterControl>();
+        //    }
+        //    return characterControl;
+        //}
     }
 }
 

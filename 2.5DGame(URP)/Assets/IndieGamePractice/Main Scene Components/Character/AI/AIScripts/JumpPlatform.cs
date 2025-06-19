@@ -10,7 +10,7 @@ namespace IndieGamePractice
     {
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
             control._Jump = true;
             control._MoveUp = true;
 
@@ -27,7 +27,7 @@ namespace IndieGamePractice
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._GetCharacterControl(animator);
+            CharacterControl control = characterStateBase._CharacterControl;
 
             float topDist = control._GetAiProgress.agent._EndSphere.transform.position.y - control._FrontSpheres[1].transform.position.y;
 
