@@ -14,6 +14,7 @@ namespace IndieGamePractice
         [SerializeField] private bool lockDirection;
         [SerializeField] private bool lockDirectionNextState;
         [SerializeField] private bool allowEarlyTurn;
+        [SerializeField] private bool ignoreCharacterCollision;
 
         [Header("Momentum")]
         [SerializeField] private float startingMomentum;
@@ -145,6 +146,15 @@ namespace IndieGamePractice
             {
                 control._CharacterMove(movementSpeed, speedGraph.Evaluate(stateInfo.normalizedTime));
             }
+
+            if (!control._MoveRight && !control._MoveLeft)
+            {
+                animator.SetBool(_TransitionParameters.Move.ToString(), false);
+            }
+            else
+            {
+                animator.SetBool(_TransitionParameters.Move.ToString(), true);
+            }
         }
 
         private void controlledMove(CharacterControl control, Animator animator, AnimatorStateInfo stateInfo)
@@ -152,6 +162,15 @@ namespace IndieGamePractice
             if (control._Jump)
             {
                 animator.SetBool(_TransitionParameters.Jump.ToString(), true);
+            }
+
+            if (control._Turbo)
+            {
+                animator.SetBool(_TransitionParameters.Turbo.ToString(), true);
+            }
+            else
+            {
+                animator.SetBool(_TransitionParameters.Turbo.ToString(), false);
             }
 
             if (control._MoveRight && control._MoveLeft)
@@ -202,6 +221,20 @@ namespace IndieGamePractice
             }
         }
 
+        private bool ignoreCharacterBoxCollider(Collider col)
+        {
+            if (!ignoreCharacterCollision)
+            {
+                return false;
+            }
+
+            if (col.gameObject.GetComponent<CharacterControl>() != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
         private bool checkFront(CharacterControl control)
         {
             foreach (GameObject obj in control._FrontSpheres)
@@ -213,7 +246,8 @@ namespace IndieGamePractice
                     {
                         if (!isBodyPart(hit.collider)
                             && !Ledge._IsLedge(hit.collider.gameObject)
-                            && !LedgeChecker._IsLedgeChecker(hit.collider.gameObject))
+                            && !LedgeChecker._IsLedgeChecker(hit.collider.gameObject)
+                            && !ignoreCharacterBoxCollider(hit.collider))
                         {
                             return true;
                         }

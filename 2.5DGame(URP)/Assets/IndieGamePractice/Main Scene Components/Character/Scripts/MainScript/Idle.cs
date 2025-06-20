@@ -22,6 +22,8 @@ namespace IndieGamePractice
         {
             CharacterControl control = characterStateBase._CharacterControl;
 
+            control._GetAnimationProgress._LockDirectionNextState = false;
+
             if (control._MoveRight && control._MoveLeft)
             {
                 animator.SetBool(_TransitionParameters.Move.ToString(), false);

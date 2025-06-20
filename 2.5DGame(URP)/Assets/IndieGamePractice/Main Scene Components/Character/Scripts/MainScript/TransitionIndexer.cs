@@ -39,13 +39,13 @@ namespace IndieGamePractice
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = characterStateBase._CharacterControl;
-            if (makeTransition(control))
+
+            if (animator.GetInteger(_TransitionParameters.TransitionIndex.ToString()) == 0)
             {
-                animator.SetInteger(_TransitionParameters.TransitionIndex.ToString(), index);
-            }
-            else
-            {
-                animator.SetInteger(_TransitionParameters.TransitionIndex.ToString(), 0);
+                if (makeTransition(control))
+                {
+                    animator.SetInteger(_TransitionParameters.TransitionIndex.ToString(), index);
+                }
             }
         }
 
