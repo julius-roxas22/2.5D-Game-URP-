@@ -15,6 +15,7 @@ namespace IndieGamePractice
     [CreateAssetMenu(fileName = "New Ability Data", menuName = "IndieGamePractice/Create/Ability/Attack")]
     public class Attack : StateData
     {
+        [Header("Set up")]
         public float _StartAttackTime;
         public float _EndAttackTime;
         //public List<string> _ColliderNames = new List<string>();
@@ -25,7 +26,15 @@ namespace IndieGamePractice
         public float _AttackRange;
         public int _MaxHits;
         private List<AttackInfo> _FinishedAttack = new List<AttackInfo>();
+
+        [Space(10)]
+        [Header("Debugging Control")]
         [SerializeField] private bool onDebug;
+
+        [Space(10)]
+        [Header("Combo")]
+        [SerializeField] private float comboStartTime;
+        [SerializeField] private float comboEndTime;
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
@@ -46,7 +55,7 @@ namespace IndieGamePractice
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = characterStateBase._CharacterControl;
-            registerAttack(control, animatorStateInfo);
+            registerAttack(animatorStateInfo);
             deRegisterAttack(animatorStateInfo);
             checkCombo(control, animator, animatorStateInfo);
         }
@@ -59,9 +68,9 @@ namespace IndieGamePractice
 
         private void checkCombo(CharacterControl control, Animator animator, AnimatorStateInfo stateInfo)
         {
-            if (stateInfo.normalizedTime >= _StartAttackTime + ((_EndAttackTime - _StartAttackTime) / 3))
+            if (stateInfo.normalizedTime >= comboStartTime /*_StartAttackTime + ((_EndAttackTime - _StartAttackTime) / 3)*/)
             {
-                if (stateInfo.normalizedTime < _EndAttackTime + ((_EndAttackTime - _StartAttackTime) / 3))
+                if (stateInfo.normalizedTime <= comboEndTime /* _EndAttackTime + ((_EndAttackTime - _StartAttackTime) / 3)*/)
                 {
                     if (control._GetAnimationProgress._AttackTriggered)
                     {
@@ -71,7 +80,7 @@ namespace IndieGamePractice
             }
         }
 
-        private void registerAttack(CharacterControl control, AnimatorStateInfo animatorStateInfo)
+        private void registerAttack(AnimatorStateInfo animatorStateInfo)
         {
             if (_StartAttackTime <= animatorStateInfo.normalizedTime && _EndAttackTime > animatorStateInfo.normalizedTime)
             {
