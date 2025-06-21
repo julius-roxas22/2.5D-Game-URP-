@@ -13,7 +13,8 @@ namespace IndieGamePractice
         ATTACK,
         JUMP,
         GRABBING_LEDGE,
-        LEFT_OR_RIGHT
+        LEFT_OR_RIGHT,
+        GROUNDED
     }
 
     [CreateAssetMenu(fileName = "New Ability Data", menuName = "IndieGamePractice/Create/Ability/TransitionIndexer")]
@@ -119,6 +120,14 @@ namespace IndieGamePractice
                     case _TransitionConditionType.LEFT_OR_RIGHT:
                         {
                             if (!control._MoveLeft && !control._MoveRight)
+                            {
+                                return false;
+                            }
+                            break;
+                        }
+                    case _TransitionConditionType.GROUNDED:
+                        {
+                            if (!control._SkinnedMesh.GetBool(_TransitionParameters.Grounded.ToString()))
                             {
                                 return false;
                             }

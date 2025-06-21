@@ -10,27 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d84d54107d22e364ba74d9cf3f8fbcde, type: 3}
-  m_Name: Player_123Combo_2_Move
+  m_Name: Player_JumpingPunch_Move
   m_EditorClassIdentifier: 
-  movementSpeed: 1.8
+  movementSpeed: 1
   blockDistance: 0.15
   speedGraph:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: -1
-      outSlope: -1
+      value: 0
+      inSlope: 9.467982
+      outSlope: 9.467982
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.6
-      value: 0.4
-      inSlope: -1
-      outSlope: -1
+      time: 0.08921367
+      value: 0.84467345
+      inSlope: 3.748632
+      outSlope: 3.748632
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.34753317
+      outWeight: 0.4370368
+    - serializedVersion: 3
+      time: 0.4
+      value: 1
+      inSlope: 0.49978563
+      outSlope: 0.49978563
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334

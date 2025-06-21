@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84d54107d22e364ba74d9cf3f8fbcde, type: 3}
   m_Name: Player_123Combo_1_Move
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 1.8
   blockDistance: 0.15
   speedGraph:
     serializedVersion: 2
