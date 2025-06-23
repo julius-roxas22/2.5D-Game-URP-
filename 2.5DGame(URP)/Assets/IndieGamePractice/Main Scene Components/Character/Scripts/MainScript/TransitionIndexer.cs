@@ -14,7 +14,8 @@ namespace IndieGamePractice
         JUMP,
         GRABBING_LEDGE,
         LEFT_OR_RIGHT,
-        GROUNDED
+        GROUNDED,
+        FACE_FORWARD
     }
 
     [CreateAssetMenu(fileName = "New Ability Data", menuName = "IndieGamePractice/Create/Ability/TransitionIndexer")]
@@ -130,6 +131,24 @@ namespace IndieGamePractice
                             if (!control._SkinnedMesh.GetBool(_TransitionParameters.Grounded.ToString()))
                             {
                                 return false;
+                            }
+                            break;
+                        }
+                    case _TransitionConditionType.FACE_FORWARD:
+                        {
+                            if (control._IsFacingForward())
+                            {
+                                if (!control._MoveRight)
+                                {
+                                    return false;
+                                }
+                            }
+                            else
+                            {
+                                if (!control._MoveLeft)
+                                {
+                                    return false;
+                                }
                             }
                             break;
                         }

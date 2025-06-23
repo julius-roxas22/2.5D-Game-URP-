@@ -21,6 +21,11 @@ namespace IndieGamePractice
             foreach (StateData d in allAbilitiesData)
             {
                 d._OnEnterAbility(this, animator, stateInfo);
+
+                if (!_CharacterControl._GetAnimationProgress._CurrentRunningAbilities.Contains(d))
+                {
+                    _CharacterControl._GetAnimationProgress._CurrentRunningAbilities.Add(d);
+                }
             }
         }
 
@@ -37,6 +42,11 @@ namespace IndieGamePractice
             foreach (StateData d in allAbilitiesData)
             {
                 d._OnExitAbility(this, animator, stateInfo);
+
+                if (_CharacterControl._GetAnimationProgress._CurrentRunningAbilities.Contains(d))
+                {
+                    _CharacterControl._GetAnimationProgress._CurrentRunningAbilities.Remove(d);
+                }
             }
         }
 

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe1bd831c8bd7346b58a2eb302f0b88, type: 3}
   m_Name: Player_123Combo_3_TransitionIndexer_1
   m_EditorClassIdentifier: 
-  conditionTypes: 040000000700000008000000
+  conditionTypes: 040000000900000008000000
   index: 1

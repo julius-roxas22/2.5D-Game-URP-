@@ -68,12 +68,10 @@ namespace IndieGamePractice
 
             control._GetAnimationProgress._LockDirectionNextState = lockDirectionNextState;
 
-            if (control._GetAnimationProgress._FrameUpdated)
+            if(control._GetAnimationProgress._IsRunningAbilities(typeof(Move) , this))
             {
                 return;
             }
-
-            control._GetAnimationProgress._FrameUpdated = true;
 
             if (useMomentum)
             {

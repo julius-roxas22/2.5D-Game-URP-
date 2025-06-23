@@ -44,7 +44,10 @@ namespace IndieGamePractice
             }
             else
             {
-                control._GetAnimationProgress._IsJumped = false;
+                if (!control._GetAnimationProgress._IsRunningAbilities(typeof(Jump), this))
+                {
+                    control._GetAnimationProgress._IsJumped = false;
+                }
             }
 
             if (control._MoveRight)

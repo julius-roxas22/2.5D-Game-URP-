@@ -6,6 +6,8 @@ namespace IndieGamePractice
 {
     public class AnimationProgress : MonoBehaviour
     {
+        [HideInInspector] public List<StateData> _CurrentRunningAbilities = new List<StateData>();
+
         private CharacterControl control;
         [SerializeField] private float pressTime;
         [SerializeField] private float maxPressTime;
@@ -19,7 +21,7 @@ namespace IndieGamePractice
         [HideInInspector] public bool _UpdatingSpheres;
 
         [HideInInspector] public float _AirMomentum;
-        [HideInInspector] public bool _FrameUpdated;
+        //[HideInInspector] public bool _FrameUpdated;
 
         [HideInInspector] public bool _UpdatingBoxCollider;
         [HideInInspector] public float _SizeSpeed;
@@ -60,9 +62,23 @@ namespace IndieGamePractice
             }
         }
 
-        private void LateUpdate()
+        public bool _IsRunningAbilities(System.Type type, StateData data)
         {
-            _FrameUpdated = false;
+            for (int i = 0; i < _CurrentRunningAbilities.Count; i++)
+            {
+                if (type == _CurrentRunningAbilities[i].GetType())
+                {
+                    if (_CurrentRunningAbilities[i] == data)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }
