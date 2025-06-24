@@ -21,7 +21,9 @@ namespace IndieGamePractice
     public enum _IndieGamePracticeScenes
     {
         CharacterSelectionScene,
-        MainScene
+        MainScene,
+        DayScene,
+        MainMenu
     }
 
     public class CharacterControl : MonoBehaviour
