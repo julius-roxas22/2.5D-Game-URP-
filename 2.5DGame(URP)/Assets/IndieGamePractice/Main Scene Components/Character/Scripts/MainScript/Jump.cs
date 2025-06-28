@@ -35,13 +35,13 @@ namespace IndieGamePractice
                 control._GetRigidBody.AddForce(Vector3.up * jumpForce);
                 control._GetAnimationProgress._IsJumped = true;
             }
-            control._PullMultiplier = pull.Evaluate(animatorStateInfo.normalizedTime);
+            //control._PullMultiplier = pull.Evaluate(animatorStateInfo.normalizedTime);
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            CharacterControl control = characterStateBase._CharacterControl;
-            control._PullMultiplier = 0f;
+            //CharacterControl control = characterStateBase._CharacterControl;
+            //control._PullMultiplier = 0f;
         }
     }
 }

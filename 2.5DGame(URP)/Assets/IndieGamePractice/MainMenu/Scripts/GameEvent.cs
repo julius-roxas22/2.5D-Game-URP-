@@ -6,7 +6,8 @@ namespace IndieGamePractice
 {
     public class GameEvent : MonoBehaviour
     {
-        public List<GameEventListener> Listeners = new List<GameEventListener>();
+        [HideInInspector] public List<GameEventListener> Listeners = new List<GameEventListener>();
+        [HideInInspector] public GameObject _GameObjectEvent;
 
         private void Awake()
         {
@@ -15,9 +16,18 @@ namespace IndieGamePractice
 
         public void _Raised()
         {
-            foreach(GameEventListener listner in Listeners)
+            foreach (GameEventListener listener in Listeners)
             {
-                listner._OnRaiseEvent();
+                listener._OnRaiseEvent();
+            }
+        }
+
+        public void _Raised(GameObject obj)
+        {
+            foreach (GameEventListener listener in Listeners)
+            {
+                _GameObjectEvent = obj;
+                listener._OnRaiseEvent();
             }
         }
     }

@@ -53,8 +53,8 @@ namespace IndieGamePractice
         public bool _Turbo;
 
         [HideInInspector] public ContactPoint[] _ContactPoints;
-        [HideInInspector] public float _GravityMultiplier;
-        [HideInInspector] public float _PullMultiplier;
+        //[HideInInspector] public float _GravityMultiplier;
+        //[HideInInspector] public float _PullMultiplier;
 
         public AnimationProgress _GetAnimationProgress;
         public Rigidbody _GetRigidBody;
@@ -128,16 +128,9 @@ namespace IndieGamePractice
         {
             if (!_GetAnimationProgress._CancelPullGravity)
             {
-                if (_GetRigidBody.velocity.y < 0f)
-                {
-                    //_GetRigidBody.velocity -= Vector3.up * _GravityMultiplier;
-                    _GetRigidBody.velocity += Vector3.down * _GravityMultiplier;
-                }
-
                 if (_GetRigidBody.velocity.y > 0f && !_Jump)
                 {
-                    //_GetRigidBody.velocity -= Vector3.up * _PullMultiplier;
-                    _GetRigidBody.velocity += Vector3.down * _PullMultiplier;
+                    _GetRigidBody.velocity += Vector3.down * _GetRigidBody.velocity.y * 0.1f;
                 }
             }
 
