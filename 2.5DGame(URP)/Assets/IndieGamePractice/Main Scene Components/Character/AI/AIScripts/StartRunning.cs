@@ -25,7 +25,8 @@ namespace IndieGamePractice
                 control._MoveLeft = true;
             }
 
-            float dist = (control._GetAiProgress.agent._StartSphere.transform.position - control.transform.position).sqrMagnitude;
+            float dist = control._GetAiProgress._GetDistanceToDistanation();
+
             if (dist > 2f)
             {
                 control._Turbo = true;
@@ -36,7 +37,7 @@ namespace IndieGamePractice
         {
             CharacterControl control = characterStateBase._CharacterControl;
 
-            float dist = (control._GetAiProgress.agent._StartSphere.transform.position - control.transform.position).sqrMagnitude;
+            float dist = control._GetAiProgress._GetDistanceToDistanation();
             if (dist < 2f)
             {
                 control._MoveRight = false;

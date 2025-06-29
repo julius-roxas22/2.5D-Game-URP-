@@ -8,11 +8,19 @@ namespace IndieGamePractice
     [CreateAssetMenu(fileName = "New Ability Data", menuName = "IndieGamePractice/Create/AI_Ability/StartWalking")]
     public class StartWalking : StateData
     {
+        [SerializeField] private Vector3 targetDir;
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
+        {
+            walkStraighTowardsTarget(characterStateBase);
+        }
+
+        private void walkStraighTowardsTarget(CharacterStateBase characterStateBase)
         {
             CharacterControl control = characterStateBase._CharacterControl;
 
-            if (control._GetAiProgress.agent._StartSphere.transform.position.z > control.transform.position.z)
+            targetDir = control._GetAiProgress.agent._StartSphere.transform.position - control.transform.position;
+
+            if (targetDir.z > 0)
             {
                 control._MoveRight = true;
                 control._MoveLeft = false;
@@ -28,7 +36,7 @@ namespace IndieGamePractice
         {
             CharacterControl control = characterStateBase._CharacterControl;
 
-            float dist = (control._GetAiProgress.agent._StartSphere.transform.position - control.transform.position).sqrMagnitude;
+            float dist = control._GetAiProgress._GetDistanceToDistanation();
 
             if (control._GetAiProgress.agent._StartSphere.transform.position.y < control._GetAiProgress.agent._EndSphere.transform.position.y)
             {
@@ -44,43 +52,6 @@ namespace IndieGamePractice
             if (control._GetAiProgress.agent._StartSphere.transform.position.y > control._GetAiProgress.agent._EndSphere.transform.position.y)
             {
                 animator.SetBool(AITransitions.fall_platform.ToString(), true);
-            }
-
-            if (control._GetAiProgress.agent._StartSphere.transform.position.y == control._GetAiProgress.agent._EndSphere.transform.position.y)
-            {
-                if (dist < 0.6f)
-                {
-                    control._MoveRight = false;
-                    control._MoveLeft = false;
-
-                    float playerDist = (control.transform.position - CharacterManager._GetInstance._GetPlayableCharacters().transform.position).sqrMagnitude;
-                    if (playerDist > 1.5f)
-                    {
-                        animator.gameObject.SetActive(false);
-                        animator.gameObject.SetActive(true);
-                    }
-
-                    #region temporary ai attack (currently disabled)
-                    //else
-                    //{
-                    //    if (CharacterManager._GetInstance._GetPlayableCharacters()._GetDamageDetector._DamageTaken == 0)
-                    //    {
-                    //        if (control._IsFacingForward())
-                    //        {
-                    //            control._MoveRight = true;
-                    //            control._MoveLeft = false;
-                    //            control._Attack = true;
-                    //        }
-                    //        else
-                    //        {
-                    //            control._MoveRight = false;
-                    //            control._MoveLeft = true;
-                    //            control._Attack = true;
-                    //        }
-                    //    }
-                    //}
-                    #endregion
-                }
             }
         }
 

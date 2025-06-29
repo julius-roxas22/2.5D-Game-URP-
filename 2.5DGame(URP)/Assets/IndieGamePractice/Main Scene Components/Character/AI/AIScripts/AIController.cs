@@ -14,22 +14,41 @@ namespace IndieGamePractice
     {
         public List<AISubset> _AISubsets = new List<AISubset>();
         public AI_Type _InitialAIType;
+        private Coroutine aiRoutine;
 
-        private void Awake()
+        private void Start()
         {
-            AISubset[] arr = GetComponentsInChildren<AISubset>();
+            _InitializeAI();
+        }
 
-            foreach (AISubset s in arr)
+        public void _InitializeAI()
+        {
+            if (_AISubsets.Count == 0)
             {
-                if (!_AISubsets.Contains(s))
+                AISubset[] arr = GetComponentsInChildren<AISubset>();
+
+                foreach (AISubset s in arr)
                 {
-                    s.gameObject.SetActive(false);
-                    _AISubsets.Add(s);
+                    if (!_AISubsets.Contains(s))
+                    {
+                        s.gameObject.SetActive(false);
+                        _AISubsets.Add(s);
+                    }
                 }
+            }
+
+            aiRoutine = StartCoroutine(_IEInitAi());
+        }
+
+        private void OnEnable()
+        {
+            if (null != aiRoutine)
+            {
+                StopCoroutine(aiRoutine);
             }
         }
 
-        private IEnumerator Start()
+        private IEnumerator _IEInitAi()
         {
             yield return new WaitForEndOfFrame();
             TriggerAI(_InitialAIType);

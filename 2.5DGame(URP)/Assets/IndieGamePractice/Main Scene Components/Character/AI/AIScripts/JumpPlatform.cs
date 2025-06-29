@@ -22,16 +22,15 @@ namespace IndieGamePractice
             {
                 control._FaceForward(false);
             }
-
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = characterStateBase._CharacterControl;
 
-            float topDist = control._GetAiProgress.agent._EndSphere.transform.position.y - control._GetColliderSpheres ._FrontSpheres[1].transform.position.y;
+            float topDist = control._GetAiProgress.agent._EndSphere.transform.position.y - control._GetColliderSpheres._FrontSpheres[1].transform.position.y;
 
-            float bottomDist = control._GetAiProgress.agent._EndSphere.transform.position.y - control._GetColliderSpheres. _BottomSpheres[0].transform.position.y;
+            float bottomDist = control._GetAiProgress.agent._EndSphere.transform.position.y - control._GetColliderSpheres._BottomSpheres[0].transform.position.y;
 
             if (topDist < 1.5f && bottomDist > 0.55f)
             {
@@ -54,8 +53,7 @@ namespace IndieGamePractice
                 control._Jump = false;
                 control._MoveUp = false;
 
-                animator.gameObject.SetActive(false);
-                animator.gameObject.SetActive(true);
+                control._GetAiController._InitializeAI();
             }
         }
 

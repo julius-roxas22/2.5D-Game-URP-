@@ -38,8 +38,7 @@ namespace IndieGamePractice
                     control._MoveRight = false;
                     control._MoveLeft = false;
 
-                    animator.gameObject.SetActive(false);
-                    animator.gameObject.SetActive(true);
+                    control._GetAiController._InitializeAI();
                 }
             }
             else
@@ -54,8 +53,7 @@ namespace IndieGamePractice
                     control._MoveRight = false;
                     control._MoveLeft = false;
 
-                    animator.gameObject.SetActive(false);
-                    animator.gameObject.SetActive(true);
+                    control._GetAiController._InitializeAI();
                 }
             }
         }

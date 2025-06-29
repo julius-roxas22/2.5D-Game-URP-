@@ -10,7 +10,7 @@ namespace IndieGamePractice
         public GameObject _Target;
         public bool _PlayableCharacter;
         private NavMeshAgent agent;
-        private List<Coroutine> moveCoroutines = new List<Coroutine>();
+        private Coroutine routine;
 
         [HideInInspector] public bool _StartWalk;
         [HideInInspector] public CharacterControl _Owner;
@@ -41,16 +41,15 @@ namespace IndieGamePractice
 
             agent.SetDestination(_Target.transform.position);
 
-            if (moveCoroutines.Count != 0)
-            {
-                if (null != moveCoroutines[0])
-                {
-                    StopCoroutine(moveCoroutines[0]);
-                }
-                moveCoroutines.RemoveAt(0);
-            }
+            routine = StartCoroutine(move());
+        }
 
-            moveCoroutines.Add(StartCoroutine(move()));
+        private void OnEnable()
+        {
+            if (null != routine)
+            {
+                StopCoroutine(routine);
+            }
         }
 
         private IEnumerator move()
@@ -59,34 +58,30 @@ namespace IndieGamePractice
             {
                 if (agent.isOnOffMeshLink)
                 {
-                    _Owner._GetNavMeshObstacle.carving = true;
-
                     _StartSphere.transform.position = agent.currentOffMeshLinkData.startPos;
                     _EndSphere.transform.position = agent.currentOffMeshLinkData.endPos;
                     agent.CompleteOffMeshLink();
                     agent.isStopped = true;
                     _StartWalk = true;
-                    yield break;
+                    break;
                 }
 
                 float dist = (transform.position - agent.destination).sqrMagnitude;
 
                 if (dist < 0.5f)
                 {
-                    if (Vector3.SqrMagnitude(_Owner.transform.position - agent.destination) > 1f)
-                    {
-                        _Owner._GetNavMeshObstacle.carving = true;
-                    }
-
                     _StartSphere.transform.position = agent.destination;
                     _EndSphere.transform.position = agent.destination;
                     agent.isStopped = true;
                     _StartWalk = true;
-                    yield break;
+                    break;
                 }
 
                 yield return new WaitForEndOfFrame();
             }
+
+            yield return new WaitForSeconds(0.5f);
+            _Owner._GetNavMeshObstacle.carving = true;
         }
     }
 }
