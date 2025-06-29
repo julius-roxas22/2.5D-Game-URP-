@@ -50,6 +50,7 @@ namespace IndieGamePractice
                     {
                         if (Mathf.Abs(control._GetRigidBody.velocity.y) < 0.001f)
                         {
+                            control._GetAnimationProgress._GroundObject = p.otherCollider.transform.root.gameObject;
                             return true;
                         }
                     }
@@ -68,12 +69,13 @@ namespace IndieGamePractice
                             && !LedgeChecker._IsLedgeChecker(hit.collider.gameObject)
                             && !Ledge._IsCharacter(hit.collider.gameObject))
                         {
+                            control._GetAnimationProgress._GroundObject = hit.collider.transform.root.gameObject;
                             return true;
                         }
                     }
                 }
             }
-
+            control._GetAnimationProgress._GroundObject = null;
             return false;
         }
 

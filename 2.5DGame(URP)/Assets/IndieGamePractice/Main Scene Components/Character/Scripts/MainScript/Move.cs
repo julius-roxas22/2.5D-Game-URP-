@@ -262,11 +262,13 @@ namespace IndieGamePractice
                             && !LedgeChecker._IsLedgeChecker(hit.collider.gameObject)
                             && !ignoreCharacterBoxCollider(hit.collider))
                         {
+                            control._GetAnimationProgress._BlockingObject = hit.collider.transform.root.gameObject;
                             return true;
                         }
                     }
                 }
             }
+            control._GetAnimationProgress._BlockingObject = null;
             return false;
         }
 

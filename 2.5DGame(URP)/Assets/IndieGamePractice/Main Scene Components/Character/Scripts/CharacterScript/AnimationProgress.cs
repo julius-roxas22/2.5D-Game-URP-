@@ -20,6 +20,8 @@ namespace IndieGamePractice
         [HideInInspector] public bool _RagdollTriggered;
         [HideInInspector] public bool _UpdatingSpheres;
 
+        public GameObject _BlockingObject;
+        public GameObject _GroundObject;
         [HideInInspector] public float _AirMomentum;
         //[HideInInspector] public bool _FrameUpdated;
 

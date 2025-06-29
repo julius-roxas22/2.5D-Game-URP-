@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 294876231}
   - component: {fileID: 294876230}
   m_Layer: 0
-  m_Name: GroundEdge
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -812,7 +812,7 @@ GameObject:
   - component: {fileID: 763941362}
   - component: {fileID: 763941361}
   m_Layer: 0
-  m_Name: GroundEdge
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2610,10 +2610,10 @@ SceneRoots:
   - {fileID: 351818992}
   - {fileID: 294876233}
   - {fileID: 763941364}
-  - {fileID: 1588980248057745024}
-  - {fileID: 8455553585405130168}
   - {fileID: 1584235696}
   - {fileID: 1842197750}
+  - {fileID: 1588980248057745024}
+  - {fileID: 8455553585405130168}
   - {fileID: 6396847315640119800}
   - {fileID: 384649416}
   - {fileID: 408706543}

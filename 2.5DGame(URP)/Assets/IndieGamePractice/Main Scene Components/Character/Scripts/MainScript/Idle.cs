@@ -16,6 +16,7 @@ namespace IndieGamePractice
 
             CharacterControl control = characterStateBase._CharacterControl;
             control._GetAnimationProgress._DisAllowEarlyTurn = false;
+            control._GetAnimationProgress._BlockingObject = null;
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
