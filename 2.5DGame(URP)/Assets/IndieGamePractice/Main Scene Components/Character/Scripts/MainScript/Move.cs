@@ -22,6 +22,9 @@ namespace IndieGamePractice
         [SerializeField] private float maxMomentum;
         [SerializeField] private bool clearMomentum;
 
+        private List<GameObject> spheresList;
+        private float blocked;
+
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = characterStateBase._CharacterControl;
@@ -68,7 +71,7 @@ namespace IndieGamePractice
 
             control._GetAnimationProgress._LockDirectionNextState = lockDirectionNextState;
 
-            if(control._GetAnimationProgress._IsRunningAbilities(typeof(Move) , this))
+            if (control._GetAnimationProgress._IsRunningAbilities(typeof(Move), this))
             {
                 return;
             }
@@ -132,7 +135,7 @@ namespace IndieGamePractice
                 control._FaceForward(false);
             }
 
-            if (!checkFront(control))
+            if (!isBlocked(control, movementSpeed))
             {
                 control._CharacterMove(movementSpeed, Mathf.Abs(control._GetAnimationProgress._AirMomentum));
             }
@@ -140,7 +143,7 @@ namespace IndieGamePractice
 
         private void constantMove(CharacterControl control, Animator animator, AnimatorStateInfo stateInfo)
         {
-            if (!checkFront(control))
+            if (!isBlocked(control, movementSpeed))
             {
                 control._CharacterMove(movementSpeed, speedGraph.Evaluate(stateInfo.normalizedTime));
             }
@@ -185,7 +188,7 @@ namespace IndieGamePractice
 
             if (control._MoveRight)
             {
-                if (!checkFront(control))
+                if (!isBlocked(control, movementSpeed))
                 {
                     control._CharacterMove(movementSpeed, speedGraph.Evaluate(stateInfo.normalizedTime));
                 }
@@ -193,7 +196,7 @@ namespace IndieGamePractice
 
             if (control._MoveLeft)
             {
-                if (!checkFront(control))
+                if (!isBlocked(control, movementSpeed))
                 {
                     control._CharacterMove(movementSpeed, speedGraph.Evaluate(stateInfo.normalizedTime));
                 }
@@ -233,12 +236,24 @@ namespace IndieGamePractice
 
             return false;
         }
-        private bool checkFront(CharacterControl control)
+
+        private bool isBlocked(CharacterControl control, float speed)
         {
-            foreach (GameObject obj in control._FrontSpheres)
+            if (speed > 0)
             {
-                Debug.DrawRay(obj.transform.position, control.transform.forward * blockDistance, Color.red);
-                if (Physics.Raycast(obj.transform.position, control.transform.forward, out RaycastHit hit, blockDistance))
+                spheresList = control._GetColliderSpheres._FrontSpheres;
+                blocked = blockDistance;
+            }
+            else
+            {
+                spheresList = control._GetColliderSpheres._BackSpheres;
+                blocked = -blockDistance;
+            }
+
+            foreach (GameObject obj in spheresList)
+            {
+                Debug.DrawRay(obj.transform.position, control.transform.forward * blocked, Color.red);
+                if (Physics.Raycast(obj.transform.position, control.transform.forward * blocked, out RaycastHit hit, blockDistance))
                 {
                     if (!control._RagdollParts.Contains(hit.collider))
                     {
@@ -252,7 +267,6 @@ namespace IndieGamePractice
                     }
                 }
             }
-
             return false;
         }
 

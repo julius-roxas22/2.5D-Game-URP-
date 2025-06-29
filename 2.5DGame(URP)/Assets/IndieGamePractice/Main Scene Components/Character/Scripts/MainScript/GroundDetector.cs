@@ -58,7 +58,7 @@ namespace IndieGamePractice
 
             if (control._GetRigidBody.velocity.y < 0f)
             {
-                foreach (GameObject obj in control._BottomSpheres)
+                foreach (GameObject obj in control._GetColliderSpheres._BottomSpheres)
                 {
                     Debug.DrawRay(obj.transform.position, -Vector3.up * distance, Color.red);
                     if (Physics.Raycast(obj.transform.position, -Vector3.up, out RaycastHit hit, distance))

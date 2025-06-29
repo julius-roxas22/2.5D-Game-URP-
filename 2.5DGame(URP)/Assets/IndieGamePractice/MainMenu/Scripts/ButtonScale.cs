@@ -11,6 +11,7 @@ namespace IndieGamePractice
     public class ButtonScale : MonoBehaviour
     {
         private GameEventListener listener;
+        private Dictionary<GameObject, Animator> dicAnimator = new Dictionary<GameObject, Animator>();
 
         private void Awake()
         {
@@ -19,12 +20,26 @@ namespace IndieGamePractice
 
         public void _ScaleUpButton()
         {
-            listener._GameEvent._GameObjectEvent.GetComponent<Animator>().SetBool(_UIParameters.ScaleUp.ToString(), true);
+            _GetAnimator(listener._GameEvent._GetEventObject).SetBool(_UIParameters.ScaleUp.ToString(), true);
         }
 
         public void _ScaleDefaultButton()
         {
-            listener._GameEvent._GameObjectEvent.GetComponent<Animator>().SetBool(_UIParameters.ScaleUp.ToString(), false);
+            _GetAnimator(listener._GameEvent._GetEventObject).SetBool(_UIParameters.ScaleUp.ToString(), false);
+        }
+
+        private Animator _GetAnimator(GameObject gameEventObject)
+        {
+            if (!dicAnimator.ContainsKey(gameEventObject))
+            {
+                Animator anim = gameEventObject.GetComponent<Animator>();
+                dicAnimator.Add(gameEventObject, anim);
+                return anim;
+            }
+            else
+            {
+                return dicAnimator[gameEventObject];
+            }
         }
     }
 }

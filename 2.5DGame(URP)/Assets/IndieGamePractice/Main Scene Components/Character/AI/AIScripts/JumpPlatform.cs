@@ -29,9 +29,9 @@ namespace IndieGamePractice
         {
             CharacterControl control = characterStateBase._CharacterControl;
 
-            float topDist = control._GetAiProgress.agent._EndSphere.transform.position.y - control._FrontSpheres[1].transform.position.y;
+            float topDist = control._GetAiProgress.agent._EndSphere.transform.position.y - control._GetColliderSpheres ._FrontSpheres[1].transform.position.y;
 
-            float bottomDist = control._GetAiProgress.agent._EndSphere.transform.position.y - control._BottomSpheres[0].transform.position.y;
+            float bottomDist = control._GetAiProgress.agent._EndSphere.transform.position.y - control._GetColliderSpheres. _BottomSpheres[0].transform.position.y;
 
             if (topDist < 1.5f && bottomDist > 0.55f)
             {

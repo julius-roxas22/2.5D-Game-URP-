@@ -40,8 +40,9 @@ namespace IndieGamePractice
             control.GetComponent<BoxCollider>().enabled = onEnable;
             if (onRepositionSpheres)
             {
-                control._RepositionFrontSpheres();
-                control._RepositionBottomSpheres();
+                control._GetColliderSpheres._RepositionFrontSpheres();
+                control._GetColliderSpheres._RepositionBottomSpheres();
+                control._GetColliderSpheres._RepositionBackSpheres();
             }
         }
     }

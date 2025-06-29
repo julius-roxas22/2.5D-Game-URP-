@@ -8,16 +8,13 @@ namespace IndieGamePractice
     {
         public GameEvent _GameEvent;
         [Space(10)]
-        public UnityEngine.Events.UnityEvent _Response;
+        [SerializeField] private UnityEngine.Events.UnityEvent _Response;
 
         private void Start()
         {
             if (null != _GameEvent)
             {
-                if (!_GameEvent.Listeners.Contains(this))
-                {
-                    _GameEvent.Listeners.Add(this);
-                }
+                _GameEvent._AddListeners(this);
             }
         }
 
