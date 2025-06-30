@@ -6,15 +6,23 @@ namespace IndieGamePractice
 {
     public enum AI_Type
     {
-        WALK_AND_JUMP,
-        RUN
+        NONE,
+        WALK_AND_JUMP
     }
 
     public class AIController : MonoBehaviour
     {
-        public List<AISubset> _AISubsets = new List<AISubset>();
         public AI_Type _InitialAIType;
+        private Vector3 targetDir;
+
         private Coroutine aiRoutine;
+        private List<AISubset> _AISubsets = new List<AISubset>();
+        private CharacterControl control;
+
+        private void Awake()
+        {
+            control = GetComponentInParent<CharacterControl>();
+        }
 
         private void Start()
         {
@@ -70,6 +78,22 @@ namespace IndieGamePractice
             if (null != aiSubset)
             {
                 aiSubset.gameObject.SetActive(true);
+            }
+        }
+
+        public void WalkStraightTowardsToStartsSPhere()
+        {
+            targetDir = control._GetAiProgress.agent._StartSphere.transform.position - control.transform.position;
+
+            if (targetDir.z > 0)
+            {
+                control._MoveRight = true;
+                control._MoveLeft = false;
+            }
+            else
+            {
+                control._MoveRight = false;
+                control._MoveLeft = true;
             }
         }
     }

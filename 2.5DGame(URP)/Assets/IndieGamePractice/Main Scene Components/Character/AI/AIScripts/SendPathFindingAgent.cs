@@ -39,14 +39,12 @@ namespace IndieGamePractice
             if (control._GetAiProgress.agent._StartWalk)
             {
                 animator.SetBool(AITransitions.start_walk.ToString(), true);
-                animator.SetBool(AITransitions.start_running.ToString(), true);
             }
         }
 
         public override void _OnExitAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             animator.SetBool(AITransitions.start_walk.ToString(), false);
-            animator.SetBool(AITransitions.start_running.ToString(), false);
         }
     }
 }
