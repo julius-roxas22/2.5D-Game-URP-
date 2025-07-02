@@ -18,9 +18,9 @@ namespace IndieGamePractice
         {
             CharacterControl control = characterStateBase._CharacterControl;
 
-            float dist = control._GetAiProgress._GetDistanceToDistanation();
+            float dist = control._GetAiProgress._GetDistanceToStartSphere();
 
-            if (control._GetAiProgress.agent._StartSphere.transform.position.y < control._GetAiProgress.agent._EndSphere.transform.position.y)
+            if (control._GetAiProgress._EndSphereIsHigher())
             {
                 if (dist < 0.01f)
                 {
@@ -28,12 +28,23 @@ namespace IndieGamePractice
                     control._MoveLeft = false;
 
                     animator.SetBool(AITransitions.jump_platform.ToString(), true);
+                    return;
                 }
             }
 
-            if (control._GetAiProgress.agent._StartSphere.transform.position.y > control._GetAiProgress.agent._EndSphere.transform.position.y)
+            if (control._GetAiProgress._EndSphereIsLower())
             {
                 animator.SetBool(AITransitions.fall_platform.ToString(), true);
+                return;
+            }
+
+            if (dist > 3f)
+            {
+                control._Turbo = true;
+            }
+            else
+            {
+                control._Turbo = false;
             }
         }
 

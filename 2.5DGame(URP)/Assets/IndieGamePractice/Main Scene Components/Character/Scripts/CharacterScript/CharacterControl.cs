@@ -72,12 +72,21 @@ namespace IndieGamePractice
             _GetAnimationProgress = GetComponent<AnimationProgress>();
             _GetAiProgress = GetComponentInChildren<AIProgress>();
             _GetDamageDetector = GetComponent<DamageDetector>();
-            _GetAiController = GetComponentInChildren<AIController>();
             _GetBoxCollider = GetComponent<BoxCollider>();
             _GetNavMeshObstacle = GetComponent<NavMeshObstacle>();
             _GetColliderSpheres = GetComponentInChildren<ColliderSpheres>();
             _GetColliderSpheres._Owner = this;
             _GetColliderSpheres._CreateSphereEdge();
+            _GetAiController = GetComponentInChildren<AIController>();
+
+            if (null == _GetAiController)
+            {
+                if (_PlayableCharacterType.NONE == characterType)
+                {
+                    _GetNavMeshObstacle.carving = true;
+                }
+            }
+
             registerCharacter();
         }
 
