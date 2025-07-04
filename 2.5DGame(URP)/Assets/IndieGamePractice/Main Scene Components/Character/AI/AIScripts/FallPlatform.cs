@@ -20,11 +20,21 @@ namespace IndieGamePractice
             {
                 control._FaceForward(false);
             }
+
+            if (control._GetAiProgress._GetDistanceToStartSphere() > 3f)
+            {
+                control._Turbo = true;
+            }
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
             CharacterControl control = characterStateBase._CharacterControl;
+
+            if (!control._SkinnedMesh.GetBool(_TransitionParameters.Grounded.ToString()))
+            {
+                return;
+            }
 
             if (control._IsFacingForward())
             {

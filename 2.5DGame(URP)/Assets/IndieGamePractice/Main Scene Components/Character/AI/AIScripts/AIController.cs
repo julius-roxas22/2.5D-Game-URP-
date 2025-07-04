@@ -81,7 +81,7 @@ namespace IndieGamePractice
             }
         }
 
-        public void WalkStraightTowardsToStartsSPhere()
+        public void _WalkStraightTowardsToStartsSPhere()
         {
             targetDir = control._GetAiProgress.agent._StartSphere.transform.position - control.transform.position;
 

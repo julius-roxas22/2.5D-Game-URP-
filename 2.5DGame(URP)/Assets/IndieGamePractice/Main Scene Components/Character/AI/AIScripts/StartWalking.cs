@@ -11,7 +11,7 @@ namespace IndieGamePractice
 
         public override void _OnEnterAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
         {
-            characterStateBase._CharacterControl._GetAiController.WalkStraightTowardsToStartsSPhere();
+            characterStateBase._CharacterControl._GetAiController._WalkStraightTowardsToStartsSPhere();
         }
 
         public override void _OnUpdateAbility(CharacterStateBase characterStateBase, Animator animator, AnimatorStateInfo animatorStateInfo)
@@ -44,6 +44,15 @@ namespace IndieGamePractice
             }
             else
             {
+                control._Turbo = false;
+            }
+
+            control._GetAiController._WalkStraightTowardsToStartsSPhere();
+
+            if (control._GetAiProgress._GetDistanceToEndSphere() < 3f)
+            {
+                control._MoveRight = false;
+                control._MoveLeft = false;
                 control._Turbo = false;
             }
         }

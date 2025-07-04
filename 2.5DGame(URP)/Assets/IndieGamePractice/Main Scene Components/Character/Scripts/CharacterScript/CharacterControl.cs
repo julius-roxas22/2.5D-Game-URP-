@@ -81,7 +81,7 @@ namespace IndieGamePractice
 
             if (null == _GetAiController)
             {
-                if (_PlayableCharacterType.NONE == characterType)
+                if (null != _GetNavMeshObstacle)
                 {
                     _GetNavMeshObstacle.carving = true;
                 }

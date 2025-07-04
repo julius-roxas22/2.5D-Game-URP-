@@ -20,6 +20,11 @@ namespace IndieGamePractice
             return (agent._StartSphere.transform.position - control.transform.position).sqrMagnitude;
         }
 
+        public float _GetDistanceToEndSphere()
+        {
+            return (agent._EndSphere.transform.position - control.transform.position).sqrMagnitude;
+        }
+
         public bool _EndSphereIsHigher()
         {
 
